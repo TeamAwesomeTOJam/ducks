@@ -3,7 +3,7 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Duck.tscn" type="PackedScene" id=2]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" index="0"]
 
 [node name="Player0" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -22,7 +22,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="Duck" parent="Player0" index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 0, 50 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Linear", "Transform" ]
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Player0/Duck" index="1"]
 
