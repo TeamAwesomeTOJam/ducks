@@ -3,24 +3,32 @@ extends RigidBody2D
 export (int) var SPEED = 500
 export (int) var PLAYER_NUMBER = 0
 
+var LEFT_ANALOG_DEADZONE = 0.25
+
+var screensize
+
 func _ready():
-    # Called every time the node is added to the scene.
-    # Initialization here
-    pass
+    screensize = get_viewport_rect().size
 
 func get_action(dir):
     return "p" + str(PLAYER_NUMBER) + dir
 
 func _process(delta):
-    var velocity = Vector2()
+    var digital_velocity = Vector2()
     if Input.is_action_pressed(get_action('right')):
-        velocity.x += 1
+        digital_velocity.x += 1
     if Input.is_action_pressed(get_action('left')):
-        velocity.x -= 1
+        digital_velocity.x -= 1
     if Input.is_action_pressed(get_action('down')):
-        velocity.y += 1
+        digital_velocity.y += 1
     if Input.is_action_pressed(get_action('up')):
-        velocity.y -= 1
+        digital_velocity.y -= 1
+    
+    var analog_velocity = Vector2(
+        Input.get_joy_axis(PLAYER_NUMBER, JOY_AXIS_0), 
+        Input.get_joy_axis(PLAYER_NUMBER, JOY_AXIS_1))
+
+    var velocity = analog_velocity if analog_velocity.length() > LEFT_ANALOG_DEADZONE else digital_velocity
     
     if velocity.length() > 0:
         velocity = velocity.normalized() * SPEED
