@@ -5,9 +5,11 @@
 
 [node name="Game" type="Node" index="0"]
 
+_sections_unfolded = [ "Pause" ]
+
 [node name="Player0" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 674.792, 346.815 )
+position = Vector2( 1034.65, 624.936 )
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Player0" index="1"]
 
@@ -47,7 +49,7 @@ _sections_unfolded = [ "Linear", "Transform" ]
 
 [node name="Player1" parent="." index="1" instance=ExtResource( 1 )]
 
-position = Vector2( 443.042, 350.314 )
+position = Vector2( 27.3558, 28.3317 )
 PLAYER_NUMBER = 1
 
 
