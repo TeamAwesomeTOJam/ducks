@@ -308,3 +308,9 @@ platform/windows/godot_res.res
 
 # Scons progress indicator
 .scons_node_count
+
+# https://godotengine.org/qa/22993/3-0-gitignore
+.DS_Store
+*~
+.import/
+logs/
