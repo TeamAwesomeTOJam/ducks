@@ -12,5 +12,6 @@ func end_game():
 func _ready():
 	pass
 
+
 func _process(delta):
 	pass
