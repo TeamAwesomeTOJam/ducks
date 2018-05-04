@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Terrain/Borders.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Terrain/Rock.tscn" type="PackedScene" id=2]
+
+[node name="Obstacles" type="Node" index="0"]
+
+[node name="Borders" parent="." index="0" instance=ExtResource( 1 )]
+
+[node name="Rock" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 700, 250 )
+
+[node name="Rock2" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 850, 160 )
+
+[node name="Rock3" parent="." index="3" instance=ExtResource( 2 )]
+
+position = Vector2( 670, 510 )
+
+[node name="Rock4" parent="." index="4" instance=ExtResource( 2 )]
+
+position = Vector2( 830, 410 )
+
+

@@ -1,0 +1,122 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.73333, 3.9 )
+
+[node name="Borders" type="Node"]
+
+[node name="TopBorder" type="RigidBody2D" parent="." index="0"]
+
+position = Vector2( 4, 0 )
+scale = Vector2( 1.125, 1 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 1
+mass = 1.0
+friction = 1.0
+bounce = 0.75
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBorder" index="0"]
+
+position = Vector2( 512, -60 )
+scale = Vector2( 73.3696, 15.3846 )
+shape = SubResource( 1 )
+
+[node name="BottomBorder" type="RigidBody2D" parent="." index="1"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 1
+mass = 1.0
+friction = 1.0
+bounce = 0.75
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBorder" index="0"]
+
+position = Vector2( 560, 780 )
+scale = Vector2( 75, 15.3846 )
+shape = SubResource( 1 )
+
+[node name="LeftBorder" type="RigidBody2D" parent="." index="2"]
+
+position = Vector2( -460, -170 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 1
+mass = 1.0
+friction = 1.0
+bounce = 0.75
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBorder" index="0"]
+
+position = Vector2( 400, 530 )
+scale = Vector2( 8.15218, 93.4782 )
+shape = SubResource( 1 )
+
+[node name="TempRightBorder" type="RigidBody2D" parent="." index="3"]
+
+position = Vector2( 530, -240 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 1
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TempRightBorder" index="0"]
+
+position = Vector2( 610, 610 )
+scale = Vector2( 8.36346, 96.3768 )
+shape = SubResource( 1 )
+
+
