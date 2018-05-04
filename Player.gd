@@ -2,6 +2,9 @@ extends RigidBody2D
 
 export (int) var SPEED = 500
 export (int) var PLAYER_NUMBER = 0
+export (PackedScene) var Duck
+
+var tail_duck = null
 
 var LEFT_ANALOG_DEADZONE = 0.25
 
@@ -9,6 +12,7 @@ var screensize
 
 func _ready():
     screensize = get_viewport_rect().size
+    
 
 func get_action(dir):
     return "p" + str(PLAYER_NUMBER) + dir
@@ -37,3 +41,24 @@ func _process(delta):
     
     #position += velocity * delta
     apply_impulse(Vector2(), velocity * delta)
+    if PLAYER_NUMBER == 1 and Input.is_action_just_pressed('duck'):
+        add_duck(Duck.instance())
+    
+
+func add_duck(duck):
+    if not tail_duck:
+        tail_duck = duck
+        var spring = DampedSpringJoint2D.new()
+        spring.set_name('spring')
+        duck.set_name('duck')
+        duck.position = Vector2(0,50)
+        self.add_child(duck)
+        self.add_child(spring)
+        spring.set_node_a('..')
+        spring.set_node_b('../duck')
+        spring.set_length(50)
+        spring.set_stiffness(40)
+    else:
+        tail_duck.add_duck(Duck)
+        tail_duck = duck
+    
