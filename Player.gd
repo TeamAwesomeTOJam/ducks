@@ -48,17 +48,20 @@ func _process(delta):
 func add_duck(duck):
     if not tail_duck:
         tail_duck = duck
-        var spring = DampedSpringJoint2D.new()
+        var spring = PinJoint2D.new()
         spring.set_name('spring')
         duck.set_name('duck')
         duck.position = Vector2(0,50)
         self.add_child(duck)
+        duck.set_owner(self)
         self.add_child(spring)
         spring.set_node_a('..')
         spring.set_node_b('../duck')
-        spring.set_length(50)
-        spring.set_stiffness(40)
+        #spring.set_length(50)
+        #spring.set_stiffness(40)
+        #spring.set_damping(1)
+        #spring.set_rest_length(0)
     else:
-        tail_duck.add_duck(Duck)
+        tail_duck.add_duck(duck)
         tail_duck = duck
     
