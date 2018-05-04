@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+var MAX_PLAYERS = 4
 var player_labels = {}
 
 
@@ -15,12 +16,16 @@ func update_time_start(time_start):
 	$LabelTimeStart.text = str(time_start)
 	
 	
-func start_game(time_remaining):
-	for label in player_labels.values():
-		label.text = "0"
-		label.show()
+func start_game(number_of_players, time_remaining, time_start):
+	for player in range(MAX_PLAYERS):
+		update_player_score(player, 0)
+		if i < number_of_players:
+			player_labels[player].show()
+		else: 
+			player_labels[player].hide()
 		
 	update_time_remaining(time_remaining)
+	update_time_start(time_start)
 
 
 func end_game():
