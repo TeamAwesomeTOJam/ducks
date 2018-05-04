@@ -1,34 +1,28 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Duck.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Terrain/Obstacles.tscn" type="PackedScene" id=3]
 
 [node name="Game" type="Node"]
 
-_sections_unfolded = [ "Pause" ]
-
 [node name="Player0" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 676.786, 450.487 )
+position = Vector2( 674.792, 346.815 )
 
-[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Player0" index="1"]
+[node name="DampedSpringJoint2D" type="PinJoint2D" parent="Player0" index="1"]
 
 visible = false
 node_a = NodePath("..")
 node_b = NodePath("../Duck")
 bias = 0.0
 disable_collision = true
-length = 50.0
-rest_length = 0.0
-stiffness = 40.0
-damping = 1.0
+softness = 0.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="Duck" parent="Player0" index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 0, 50 )
-_sections_unfolded = [ "Linear", "Transform" ]
+_sections_unfolded = [ "Transform" ]
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Player0/Duck" index="1"]
 
@@ -50,9 +44,7 @@ _sections_unfolded = [ "Linear", "Transform" ]
 
 [node name="Player1" parent="." index="1" instance=ExtResource( 1 )]
 
-position = Vector2( 192.833, 386.201 )
+position = Vector2( 443.042, 350.314 )
 PLAYER_NUMBER = 1
-
-[node name="Obstacles" parent="." index="2" instance=ExtResource( 3 )]
 
 
