@@ -185,8 +185,8 @@ func add_child_duck(duck):
             duck.parent.remove_child_duck()
         
     if !tail_duck: 
+        duck.set_player(self)
         tail_duck = duck.get_tail()
-        tail_duck.player = self
             
         joint = PinJoint2D.new()
         joint.set_name('joint')
@@ -195,8 +195,10 @@ func add_child_duck(duck):
         add_child(joint)
     else:
         if tail_duck.add_child_duck(duck):
+            duck.set_player(self)
             tail_duck = duck.get_tail()
-            tail_duck.player = self
+        
+        
             
 func remove_child_duck():
     var _duck = tail_duck

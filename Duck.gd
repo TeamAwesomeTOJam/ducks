@@ -30,6 +30,14 @@ func get_tail():
     while tail.child != null:
         tail = tail.child
     return tail
+    
+    
+func set_player(_player):
+    var _duck = self
+    while _duck:
+        _duck.player = _player
+        _duck = _duck.child
+    
 
 func _process(delta):
     if state == STATE.Playing:
