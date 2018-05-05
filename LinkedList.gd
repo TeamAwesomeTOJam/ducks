@@ -13,27 +13,29 @@ func add_nodes_tail(node):
         head = node
     
     tail = node
-    while tail:
+    length += 1
+    while tail.next:
         tail = tail.next
         length += 1
         
+    print(head)
+    print(tail)
         
-func splt_at_node(node):
+        
+func split_at_node(node):
     var _length = 0
-    _node = head
-    while _node != node:
+    var _node = head
+    while _node != null && _node != node:
         _node = _node.next
         _length += 1
-    
-    length = _length
         
     if _node:
         if _node.prev:
             _node.prev.next = null
+        tail = _node.prev
         _node.prev = null
         
+        length = _length
+        if length < 1:
+            head = tail
         
-func apply_function_to_nodes(function):
-    var _node = head
-    while _node:
-        function(_node)

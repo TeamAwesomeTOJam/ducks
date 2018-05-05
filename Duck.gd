@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+var joint = null
 var player = null
 var prev = null
 var next = null
@@ -25,8 +26,20 @@ func _ready():
     SPEED = 250
     respawn()
 
+
 func is_duck():
     pass
+
+
+func join(to):
+    if self.joint:
+        self.joint.free()
+        
+    self.joint = PinJoint2D.new()
+    self.joint.set_name('joint')
+    self.joint.set_node_a(to.get_path())
+    self.joint.set_node_b(self.get_path())
+    self.add_child(self.joint)
     
 
 func _process(delta):
@@ -105,6 +118,7 @@ func enter_playing_state():
     self.set_collision_mask(DEFAULT_COLLISION_MASK)
     self.set_collision_layer(DEFAULT_COLLISION_LAYER)
     state = STATE.Playing
+<<<<<<< HEAD
 
 func set_collision_stuff(mask, layer):
     self.set_collision_mask(mask)
@@ -121,3 +135,5 @@ func entered_score_zone():
 
 func _on_Duck_body_entered(body):
     pass
+=======
+>>>>>>> 47d8d887dfa324eff35547706ba554c4be15c354

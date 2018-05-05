@@ -17,7 +17,7 @@ enum STATE {
 }
 
 var state = null
-var number_of_active_players = 0
+var number_of_active_players = 4
 
 
 func pre_game():
