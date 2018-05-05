@@ -10,7 +10,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 300, 700 )
 
-[node name="Game" type="Node" index="0"]
+[node name="Game" type="Node"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
