@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 radius = 22.942
 
-[node name="Player" type="RigidBody2D" index="0"]
+[node name="Player" type="RigidBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -33,7 +33,10 @@ _sections_unfolded = [ "Linear", "Transform" ]
 SPEED = 20000
 MAX_SPEED = 500
 PLAYER_NUMBER = 0
+BOOST_FACTOR = 2
 Duck = ExtResource( 2 )
+BOOST_WAIT_TIME = 3
+BOOST_TIME = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 

@@ -21,17 +21,11 @@ Player = ExtResource( 2 )
 
 position = Vector2( 674.792, 346.815 )
 _sections_unfolded = [ "Collision", "Linear", "Transform" ]
-BOOST_FACTOR = 2
-BOOST_WAIT_TIME = 3
-BOOST_TIME = 0.2
 
 [node name="Player1" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 443.042, 350.314 )
 PLAYER_NUMBER = 1
-BOOST_FACTOR = 2
-BOOST_WAIT_TIME = 3
-BOOST_TIME = 0.2
 
 [node name="Boarders" parent="." index="2" instance=ExtResource( 3 )]
 
