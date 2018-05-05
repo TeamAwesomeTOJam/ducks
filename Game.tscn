@@ -69,5 +69,3 @@ _sections_unfolded = [ "Pause" ]
 position = Vector2( 709.624, 607.164 )
 
 [connection signal="body_entered" from="ScoringArea" to="." method="_on_ScoringArea_body_entered"]
-
-
