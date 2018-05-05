@@ -72,3 +72,8 @@ func _process(delta):
     # TODO: REMOVE THIS AT SOME POINT, OR DON'T I'M NOT THE BOSS OF YOU.
     if state == IDLE && Input.is_action_pressed('ui_up'):
         pre_game()
+
+
+func _on_ScoringZone_body_entered(body):
+    if(body.has_method('entered_score_zone')):
+        body.entered_score_zone()
