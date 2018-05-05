@@ -1,10 +1,10 @@
 extends RigidBody2D
 
 var player = null
+var prev = null
+var next = null
 
-var parent = null
-var child = null
-var joint = null
+
 var state
 var spawning_timer
 var spawn_destination
@@ -23,20 +23,6 @@ func _ready():
 
 func is_duck():
     pass
-
-
-func get_tail():
-    var tail = self
-    while tail.child != null:
-        tail = tail.child
-    return tail
-    
-    
-func set_player(_player):
-    var _duck = self
-    while _duck:
-        _duck.player = _player
-        _duck = _duck.child
     
 
 func _process(delta):
@@ -55,35 +41,6 @@ func _integrate_forces(f_state):
         set_applied_force(Vector2(0,0))
 
         state = STATE.Spawning
-
-func add_child_duck(_child):
-    if child:
-        return false
-
-    joint = PinJoint2D.new()
-    joint.set_name('joint')
-    joint.set_node_a('..')
-    joint.set_node_b(_child.get_path())
-    add_child(joint)
-
-    _child.parent = self
-    child = _child
-
-    return true
-
-
-func remove_child_duck():
-    if !child:
-        return
-
-    joint.free()
-
-    var _child = child
-    _child.parent = null
-    _child.set_player(null)
-    child = null
-
-    return _child
 
 
 ###

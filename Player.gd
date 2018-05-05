@@ -173,42 +173,12 @@ func entered_score_zone():
     scoring_timer = 3.0
     state = STATE.Scoring
 
-var joint = null
-func add_child_duck(duck):
-    if duck.player == self:
-        return 
-        
-    if duck.player != null && duck.player != self:
-        if duck.parent == null:
-            duck = duck.player.remove_child_duck()
-        else:
-            duck.player.tail_duck = duck.parent
-            duck = duck.parent.remove_child_duck()
-        
-    if !tail_duck: 
-        duck.set_player(self)
-        tail_duck = duck.get_tail()
-            
-        joint = PinJoint2D.new()
-        joint.set_name('joint')
-        joint.set_node_a('..')
-        joint.set_node_b(duck.get_path())
-        add_child(joint)
-    else:
-        if tail_duck.add_child_duck(duck):
-            duck.set_player(self)
-            tail_duck = duck.get_tail()
-
-            
-func remove_child_duck():
-    var _duck = tail_duck
-    tail_duck = null
-    joint.free()
-    
-    return _duck
-
 
 func _on_DuckCaptureArea_body_entered(body):
     if body.has_method('is_duck'):
-        body.set_collision_stuff(DEFAULT_COLLISION_MASK, DEFAULT_COLLISION_LAYER)
-        add_child_duck(body)
+        handle_duck_collision(body)
+#        body.set_collision_stuff(DEFAULT_COLLISION_MASK, DEFAULT_COLLISION_LAYER)
+
+
+func handle_duck_collision(duck):
+    pass
