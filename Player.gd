@@ -32,14 +32,10 @@ func get_action(dir):
 func _process(delta):
     if state == STATE.Playing:
         playing(delta)
-    if state == STATE.Scoring:
+    elif state == STATE.Scoring:
         scoring(delta)
-    if state == STATE.Spawning:
-        spawning(delta)
-    
-    if Input.is_action_just_pressed(get_action('duck')):
-        add_duck(Duck.instance())
-    
+    elif state == STATE.Spawning:
+        spawning(delta)    
 
 func add_duck(duck):
     if not tail_duck:
@@ -65,32 +61,29 @@ func add_duck(duck):
 # STATE METHODS
 ###
 func playing(delta):
-    var digital_impulse_vector = Vector2()
+    var digital_velocity = Vector2()
     if Input.is_action_pressed(get_action('right')):
-        digital_impulse_vector.x += 1
+        digital_velocity.x += 1
     if Input.is_action_pressed(get_action('left')):
-        digital_impulse_vector.x -= 1
+        digital_velocity.x -= 1
     if Input.is_action_pressed(get_action('down')):
-        digital_impulse_vector.y += 1
+        digital_velocity.y += 1
     if Input.is_action_pressed(get_action('up')):
-        digital_impulse_vector.y -= 1
+        digital_velocity.y -= 1
     
-    var analog_impulse_vector = Vector2(
+    var analog_velocity = Vector2(
         Input.get_joy_axis(PLAYER_NUMBER, JOY_AXIS_0), 
         Input.get_joy_axis(PLAYER_NUMBER, JOY_AXIS_1))
 
-    var impulse_vector = analog_impulse_vector if analog_impulse_vector.length() > LEFT_ANALOG_DEADZONE else digital_impulse_vector
+    var velocity = analog_velocity if analog_velocity.length() > LEFT_ANALOG_DEADZONE else digital_velocity
     
-    if impulse_vector.length() > 0:
-        impulse_vector = impulse_vector.normalized() * SPEED
+    if velocity.length() > 0:
+        velocity = velocity.normalized() * SPEED
     else:
-        impulse_vector = - linear_velocity.normalized() * SPEED
+        velocity = - linear_velocity.normalized() * SPEED
     
-
-    #position += impulse_vector * delta
-    apply_impulse(Vector2(), impulse_vector * delta)
-    if Input.is_action_just_pressed(get_action('duck')):
-        add_duck(Duck.instance())
+    #position += velocity * delta
+    apply_impulse(Vector2(), velocity * delta)
     
 
 func scoring(delta):
