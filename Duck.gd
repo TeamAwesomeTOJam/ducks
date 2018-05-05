@@ -80,6 +80,7 @@ func remove_child_duck():
 
     var _child = child
     _child.parent = null
+    _child.set_player(null)
     child = null
 
     return _child

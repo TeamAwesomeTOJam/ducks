@@ -180,9 +180,10 @@ func add_child_duck(duck):
         
     if duck.player != null && duck.player != self:
         if duck.parent == null:
-            duck.player.remove_child_duck()
+            duck = duck.player.remove_child_duck()
         else:
-            duck.parent.remove_child_duck()
+            duck.player.tail_duck = duck.parent
+            duck = duck.parent.remove_child_duck()
         
     if !tail_duck: 
         duck.set_player(self)
@@ -197,8 +198,7 @@ func add_child_duck(duck):
         if tail_duck.add_child_duck(duck):
             duck.set_player(self)
             tail_duck = duck.get_tail()
-        
-        
+
             
 func remove_child_duck():
     var _duck = tail_duck
