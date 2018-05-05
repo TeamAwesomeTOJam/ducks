@@ -48,8 +48,8 @@ func _process(delta):
 func _integrate_forces(f_state):
     if state == STATE.MoveToRespawn:
         var xform = f_state.get_transform()
-        xform.origin.x = -50
-        xform.origin.y = -50
+        xform.origin.x = -10
+        xform.origin.y = rand_range(150,180)
         f_state.set_transform(xform)
         set_applied_force(Vector2(0,0))
 
@@ -70,7 +70,7 @@ func spawning(delta):
     #    print(spawning_timer)
     #    apply_impulse(Vector2(), Vector2(0.7, 1).normalized() * 10000 * delta)
     if self.position.x < spawn_destination.x - 300:
-        var vector = Vector2(1, 0.2).normalized()
+        var vector = Vector2(1, 0.05).normalized()
         self.apply_impulse(Vector2(), vector * 20000 * delta)
     elif self.position.y < spawn_destination.y:
         var vector = (spawn_destination - self.position).normalized()
@@ -90,8 +90,7 @@ func respawn():
     self.linear_velocity = Vector2(0,0)
     spawning_timer = 1
     state = STATE.MoveToRespawn
-    spawn_destination = Vector2(rand_range(50, 1200), rand_range(50, 1200))
-    print(spawn_destination)
+    spawn_destination = Vector2(rand_range(740, 1280), rand_range(320, 1100))
 
 func enter_playing_state():
     self.set_collision_mask(DEFAULT_COLLISION_MASK)
