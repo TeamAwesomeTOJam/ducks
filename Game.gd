@@ -68,12 +68,11 @@ func spawn_duck():
     var duck = Duck.instance()
     duck.set_name('duck')
     
-    duck.position = Vector2(rand_range(0, 1280), rand_range(0, 1280))
+    duck.position = Vector2(-500, -500)
     
     self.add_child(duck)
     duck.set_owner(self)
     
-    # TODO: Set duck state to spawning, spawn them behind the waterfall, spawn them in a random area
 
 func _ready():
     update_state(STATE.idle)
