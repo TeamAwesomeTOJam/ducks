@@ -65,29 +65,32 @@ func add_duck(duck):
 # STATE METHODS
 ###
 func playing(delta):
-    var digital_velocity = Vector2()
+    var digital_impulse_vector = Vector2()
     if Input.is_action_pressed(get_action('right')):
-        digital_velocity.x += 1
+        digital_impulse_vector.x += 1
     if Input.is_action_pressed(get_action('left')):
-        digital_velocity.x -= 1
+        digital_impulse_vector.x -= 1
     if Input.is_action_pressed(get_action('down')):
-        digital_velocity.y += 1
+        digital_impulse_vector.y += 1
     if Input.is_action_pressed(get_action('up')):
-        digital_velocity.y -= 1
+        digital_impulse_vector.y -= 1
     
-    var analog_velocity = Vector2(
+    var analog_impulse_vector = Vector2(
         Input.get_joy_axis(PLAYER_NUMBER, JOY_AXIS_0), 
         Input.get_joy_axis(PLAYER_NUMBER, JOY_AXIS_1))
 
-    var velocity = analog_velocity if analog_velocity.length() > LEFT_ANALOG_DEADZONE else digital_velocity
+    var impulse_vector = analog_impulse_vector if analog_impulse_vector.length() > LEFT_ANALOG_DEADZONE else digital_impulse_vector
     
-    if velocity.length() > 0:
-        velocity = velocity.normalized() * SPEED
+    if impulse_vector.length() > 0:
+        impulse_vector = impulse_vector.normalized() * SPEED
     else:
-        velocity = - linear_velocity.normalized() * SPEED
+        impulse_vector = - linear_velocity.normalized() * SPEED
     
-    #position += velocity * delta
-    apply_impulse(Vector2(), velocity * delta)
+
+    #position += impulse_vector * delta
+    apply_impulse(Vector2(), impulse_vector * delta)
+    if Input.is_action_just_pressed(get_action('duck')):
+        add_duck(Duck.instance())
     
 
 func scoring(delta):
