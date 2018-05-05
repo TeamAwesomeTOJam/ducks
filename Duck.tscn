@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="Duck" type="RigidBody2D" index="0"]
+[node name="Duck" type="RigidBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -28,7 +28,7 @@ linear_damp = 10.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
-_sections_unfolded = [ "Linear" ]
+_sections_unfolded = [ "Collision", "Linear" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 

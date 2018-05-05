@@ -5,6 +5,8 @@ export (int) var MAX_SPEED = 500
 export (int) var PLAYER_NUMBER = 0
 export (float) var BOOST_FACTOR = 2
 export (PackedScene) var Duck
+export (float) var BOOST_WAIT_TIME = 3
+export (float) var BOOST_TIME = 0.2
 
 var tail_duck = null
 var state
@@ -20,6 +22,9 @@ enum STATE {
 
 var scoring_timer
 var spawning_timer
+var boost_wait_timer
+var boost_timer
+var boosting
 var screensize
 var DEFAULT_COLLISION_MASK = 1
 var DEFAULT_COLLISION_LAYER = 1
@@ -88,13 +93,23 @@ func playing(delta):
     var analog_impulse_vector = Vector2(
         Input.get_joy_axis(PLAYER_NUMBER, JOY_AXIS_0), 
         Input.get_joy_axis(PLAYER_NUMBER, JOY_AXIS_1))
+    
+    self.boost_timer = max(self.boost_timer - delta, 0)
+    self.boost_wait_timer = max(self.boost_wait_timer - delta, 0)
+    if self.boost_timer == 0:
+        boosting = false
+        
+    if Input.is_action_just_pressed(get_action('boost')) and self.boost_wait_timer == 0:
+        self.boosting = true
+        self.boost_timer = BOOST_TIME
+        self.boost_wait_timer = BOOST_WAIT_TIME
 
     var impulse_vector = analog_impulse_vector if analog_impulse_vector.length() > LEFT_ANALOG_DEADZONE else digital_impulse_vector
     
     var max_speed = MAX_SPEED
     if impulse_vector.length() > 0:
         impulse_vector = impulse_vector.normalized() * SPEED
-        if Input.is_action_pressed(get_action('boost')):
+        if self.boosting:
             impulse_vector *= BOOST_FACTOR
             max_speed *= BOOST_FACTOR
     #else:
@@ -140,6 +155,9 @@ func spawning(delta):
 func enter_playing_state():
     self.set_collision_mask(DEFAULT_COLLISION_MASK)
     self.set_collision_layer(DEFAULT_COLLISION_LAYER)
+    self.boost_timer = 0
+    self.boost_wait_timer = 0
+    self.boosting = false
     state = STATE.Playing
 
 func respawn():
