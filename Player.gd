@@ -26,11 +26,13 @@ var boost_wait_timer
 var boost_timer
 var boosting
 var screensize
-var DEFAULT_COLLISION_MASK = 1
-var DEFAULT_COLLISION_LAYER = 1
+var DEFAULT_COLLISION_MASK
+var DEFAULT_COLLISION_LAYER
 
 func _ready():
     screensize = get_viewport_rect().size
+    DEFAULT_COLLISION_LAYER = 1 << PLAYER_NUMBER
+    DEFAULT_COLLISION_MASK = 15 ^ DEFAULT_COLLISION_LAYER
 
     enter_playing_state()
 

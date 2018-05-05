@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -35,7 +35,6 @@ PLAYER_NUMBER = 1
 
 [node name="ScoringArea" type="Area2D" parent="." index="4"]
 
-editor/display_folded = true
 position = Vector2( 2560, 720 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -68,9 +67,7 @@ _sections_unfolded = [ "Pause" ]
 
 position = Vector2( 709.624, 607.164 )
 
-[node name="Duck" parent="." index="8" instance=ExtResource( 7 )]
-
-position = Vector2( 1348.14, 478.052 )
+[connection signal="body_entered" from="ScoringArea" to="." method="_on_ScoringArea_body_entered"]
 
 [node name="Duck2" parent="." index="9" instance=ExtResource( 7 )]
 
@@ -85,5 +82,4 @@ position = Vector2( 1540.02, 636.851 )
 position = Vector2( 1508.59, 471.435 )
 
 [connection signal="body_entered" from="ScoringArea" to="." method="_on_ScoringArea_body_entered"]
-
 
