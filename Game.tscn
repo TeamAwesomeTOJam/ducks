@@ -47,19 +47,19 @@ Duck = ExtResource( 3 )
 
 frames = SubResource( 1 )
 animation = "loop"
-frame = 4
+frame = 3
 playing = true
 offset = Vector2( 1280, 720 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="Player0" parent="." index="1" instance=ExtResource( 2 )]
 
-position = Vector2( 674.792, 346.815 )
+position = Vector2( 782.234, 364.195 )
 _sections_unfolded = [ "Collision", "Linear", "Transform", "Z Index" ]
 
 [node name="Player1" parent="." index="2" instance=ExtResource( 2 )]
 
-position = Vector2( 443.042, 350.314 )
+position = Vector2( 518.883, 859.082 )
 PLAYER_NUMBER = 1
 
 [node name="HUD" parent="." index="3" instance=ExtResource( 10 )]
@@ -100,6 +100,7 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="Borders" type="StaticBody2D" parent="." index="7"]
 
+editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -128,6 +129,8 @@ shape = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Rocks" type="Node" parent="." index="8"]
+
+editor/display_folded = true
 
 [node name="Rock" parent="Rocks" index="0" instance=ExtResource( 12 )]
 
