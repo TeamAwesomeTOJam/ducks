@@ -35,6 +35,8 @@ MAX_SPEED = 500
 PLAYER_NUMBER = 0
 BOOST_FACTOR = 2
 Duck = ExtResource( 2 )
+BOOST_WAIT_TIME = 3
+BOOST_TIME = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
