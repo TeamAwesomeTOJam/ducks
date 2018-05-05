@@ -121,10 +121,4 @@ func enter_playing_state():
 
 
 func _on_Duck_body_entered(body):
-<<<<<<< HEAD
-    body
-
-func _process(delta):
-=======
->>>>>>> 0c1d518b30a8057ffb1804df81ddffaae91b7c91
     pass
