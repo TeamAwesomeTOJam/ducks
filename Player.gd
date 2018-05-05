@@ -208,6 +208,5 @@ func remove_child_duck():
 
 func _on_DuckCaptureArea_body_entered(body):
     if body.has_method('is_duck'):
-        body.set_collision_mask(DEFAULT_COLLISION_MASK)
-        body.set_collision_layer(DEFAULT_COLLISION_LAYER)
+        body.set_collision_stuff(DEFAULT_COLLISION_MASK, DEFAULT_COLLISION_LAYER)
         add_child_duck(body)
