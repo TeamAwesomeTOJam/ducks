@@ -209,12 +209,12 @@ func handle_duck_collision(duck):
     if duck.player == self:
         return
     
-    var to = self
-    if $LinkedList.tail:
-        to = $LinkedList.tail 
-    
     if duck.player != null:
         duck.player.split_at_node(duck)
+        
+    var to = self
+    if $LinkedList.tail != null:
+        to = $LinkedList.tail 
 
     $LinkedList.add_nodes_tail(duck)
 

@@ -29,13 +29,15 @@ func is_duck():
 
 func join(to):
     if self.joint:
-        self.joint.free()
+        self.joint.queue_free()
         
+    print(to.get_path(), self.get_path())
+    
     self.joint = PinJoint2D.new()
     self.joint.set_name('joint')
     self.joint.set_node_a(to.get_path())
     self.joint.set_node_b(self.get_path())
-    self.add_child(self.joint)
+    to.add_child(self.joint)
     
 
 func _process(delta):

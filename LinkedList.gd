@@ -17,10 +17,7 @@ func add_nodes_tail(node):
     while tail.next:
         tail = tail.next
         length += 1
-        
-    print(head)
-    print(tail)
-        
+
         
 func split_at_node(node):
     var _length = 0
