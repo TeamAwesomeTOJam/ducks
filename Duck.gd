@@ -118,7 +118,6 @@ func enter_playing_state():
     self.set_collision_mask(DEFAULT_COLLISION_MASK)
     self.set_collision_layer(DEFAULT_COLLISION_LAYER)
     state = STATE.Playing
-<<<<<<< HEAD
 
 func set_collision_stuff(mask, layer):
     self.set_collision_mask(mask)
@@ -135,5 +134,3 @@ func entered_score_zone():
 
 func _on_Duck_body_entered(body):
     pass
-=======
->>>>>>> 47d8d887dfa324eff35547706ba554c4be15c354

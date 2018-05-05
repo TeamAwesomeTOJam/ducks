@@ -123,6 +123,16 @@ func playing(delta):
         var new_speed = get_linear_velocity().normalized()
         new_speed *= max_speed
         set_linear_velocity(new_speed)
+        
+    # Animation
+    if impulse_vector.x > 0 and impulse_vector.x > impulse_vector.y:
+        $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_right"
+    elif impulse_vector.x < 0 and impulse_vector.x < impulse_vector.y:
+        $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_left"
+    elif impulse_vector.y > 0 and impulse_vector.y > impulse_vector.x:
+        $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_down"
+    elif impulse_vector.y < 0 and impulse_vector.y < impulse_vector.x:
+        $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_up"
 
     #if Input.is_action_just_pressed(get_action('duck')):
     #    add_duck(Duck.instance())

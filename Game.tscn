@@ -37,7 +37,7 @@ extents = Vector2( 1280, 100 )
 custom_solver_bias = 0.0
 extents = Vector2( 100, 720 )
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
 Player = ExtResource( 2 )
@@ -47,7 +47,7 @@ Duck = ExtResource( 3 )
 
 frames = SubResource( 1 )
 animation = "loop"
-frame = 4
+frame = 3
 playing = true
 offset = Vector2( 1280, 720 )
 _sections_unfolded = [ "Z Index" ]
@@ -129,6 +129,8 @@ shape = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Rocks" type="Node" parent="." index="8"]
+
+editor/display_folded = true
 
 [node name="Rock" parent="Rocks" index="0" instance=ExtResource( 12 )]
 
