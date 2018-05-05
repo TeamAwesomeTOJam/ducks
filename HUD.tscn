@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://HUD.gd" type="Script" id=1]
+[ext_resource path="res://Freight Train Gangsta.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 50
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Font/fallback", "Settings" ]
 
 [node name="HUD" type="CanvasLayer" index="0"]
 
@@ -17,16 +26,15 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -1.0
-margin_top = -1.0
-margin_right = 199.0
-margin_bottom = 99.0
+margin_right = 386.0
+margin_bottom = 150.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.586274, 1, 0.47043, 1 )
 text = "PLAYER1 SCORE"
 align = 1
@@ -42,14 +50,15 @@ anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-margin_left = -200.0
-margin_bottom = 100.0
+margin_left = -393.0
+margin_bottom = 150.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.327957, 0.669229, 1, 1 )
 text = "PLAYER2 SCORE"
 align = 1
@@ -65,14 +74,15 @@ anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
-margin_top = -100.0
-margin_right = 200.0
+margin_top = -150.0
+margin_right = 394.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0.357527, 0.357527, 1 )
 text = "PLAYER3 SCORE"
 align = 1
@@ -88,15 +98,15 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -201.0
-margin_top = -100.0
-margin_right = -1.0
+margin_left = -392.0
+margin_top = -150.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.90625, 0.837961, 0.57006, 1 )
 text = "PLAYER4 SCORE"
 align = 1
@@ -106,7 +116,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_colors" ]
 
-[node name="LabelTimeRemaining" type="Label" parent="." index="4"]
+[node name="LabelTimeGame" type="Label" parent="." index="4"]
 
 anchor_left = 0.5
 anchor_top = 0.0
@@ -114,37 +124,39 @@ anchor_right = 0.5
 anchor_bottom = 0.0
 margin_left = -100.0
 margin_right = 100.0
-margin_bottom = 100.0
+margin_bottom = 150.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "REMAINING"
+custom_fonts/font = SubResource( 1 )
+text = "GAME"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="LabelTimeStart" type="Label" parent="." index="5"]
+[node name="LabelTimePreGame" type="Label" parent="." index="5"]
 
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -100.0
-margin_top = -50.0
-margin_right = 100.0
-margin_bottom = 50.0
+margin_left = -120.5
+margin_top = -75.0
+margin_right = 120.5
+margin_bottom = 75.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "START"
+custom_fonts/font = SubResource( 1 )
+text = "PRE GAME"
 align = 1
 valign = 1
 percent_visible = 1.0
