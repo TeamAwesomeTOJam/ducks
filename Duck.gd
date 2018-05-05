@@ -11,6 +11,13 @@ func _ready():
     
 func is_duck():
     pass
+    
+
+func get_tail():
+    var tail = self
+    while tail.child != null:
+        tail = tail.child
+    return tail
 
 
 func add_child_duck(_child): 
@@ -44,3 +51,6 @@ func remove_child_duck():
 
 func _on_Duck_body_entered(body):
     body
+    
+func _process(delta):
+    pass

@@ -176,8 +176,14 @@ func add_child_duck(duck):
     if duck.player == self:
         return 
         
+    if duck.player != null && duck.player != self:
+        if duck.parent == null:
+            duck.player.remove_child_duck()
+        else:
+            duck.parent.remove_child_duck()
+        
     if !tail_duck: 
-        tail_duck = duck
+        tail_duck = duck.get_tail()
         tail_duck.player = self
             
         joint = PinJoint2D.new()
@@ -186,9 +192,16 @@ func add_child_duck(duck):
         joint.set_node_b(duck.get_path())
         add_child(joint)
     else:
-        tail_duck.add_child_duck(duck)
-        tail_duck = duck
-        tail_duck.player = self
+        if tail_duck.add_child_duck(duck):
+            tail_duck = duck.get_tail()
+            tail_duck.player = self
+            
+func remove_child_duck():
+    var _duck = tail_duck
+    tail_duck = null
+    joint.free()
+    
+    return _duck
 
 
 func _on_DuckCaptureArea_body_entered(body):
