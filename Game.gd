@@ -14,11 +14,11 @@ var PRE_GAME = 'pre_game'
 var GAME = 'game'
 
 var state = null
-var number_of_players = 2
+var number_of_active_players = 0
 
 
 func pre_game():
-    $HUD.pre_game(number_of_players, MAX_TIME_PRE_GAME)
+    $HUD.pre_game(number_of_active_players, MAX_TIME_PRE_GAME)
     update_state(PRE_GAME)
 
 
