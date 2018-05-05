@@ -26,11 +26,13 @@ var boost_wait_timer
 var boost_timer
 var boosting
 var screensize
-var DEFAULT_COLLISION_MASK = 1
-var DEFAULT_COLLISION_LAYER = 1
+var DEFAULT_COLLISION_MASK
+var DEFAULT_COLLISION_LAYER
 
 func _ready():
     screensize = get_viewport_rect().size
+    DEFAULT_COLLISION_LAYER = 1 << PLAYER_NUMBER
+    DEFAULT_COLLISION_MASK = 15 ^ DEFAULT_COLLISION_LAYER
 
     enter_playing_state()
 
@@ -206,4 +208,6 @@ func remove_child_duck():
 
 func _on_DuckCaptureArea_body_entered(body):
     if body.has_method('is_duck'):
+        body.set_collision_mask(DEFAULT_COLLISION_MASK)
+        body.set_collision_layer(DEFAULT_COLLISION_LAYER)
         add_child_duck(body)

@@ -68,22 +68,4 @@ _sections_unfolded = [ "Pause" ]
 
 position = Vector2( 709.624, 607.164 )
 
-[node name="Duck" parent="." index="8" instance=ExtResource( 3 )]
-
-position = Vector2( 1348.14, 478.052 )
-
-[node name="Duck2" parent="." index="9" instance=ExtResource( 3 )]
-
-position = Vector2( 1401.07, 612.039 )
-
-[node name="Duck3" parent="." index="10" instance=ExtResource( 3 )]
-
-position = Vector2( 1540.02, 636.851 )
-
-[node name="Duck4" parent="." index="11" instance=ExtResource( 3 )]
-
-position = Vector2( 1508.59, 471.435 )
-
 [connection signal="body_entered" from="ScoringArea" to="." method="_on_ScoringArea_body_entered"]
-
-
