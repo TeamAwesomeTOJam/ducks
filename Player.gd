@@ -10,6 +10,7 @@ export (float) var BOOST_TIME = 0.2
 
 var tail_duck = null
 var state
+var wait = false
 
 var LEFT_ANALOG_DEADZONE = 0.25
 
@@ -21,7 +22,7 @@ enum STATE {
 }
 
 var scoring_timer
-var spawning_timer
+var spawn_destination
 var boost_wait_timer
 var boost_timer
 var boosting
@@ -47,12 +48,11 @@ func _process(delta):
     elif state == STATE.Spawning:
         spawning(delta)
 
-
 func _integrate_forces(f_state):
     if state == STATE.MoveToRespawn:
         var xform = f_state.get_transform()
-        xform.origin.x = -50
-        xform.origin.y = -50
+        xform.origin.x = -10
+        xform.origin.y = rand_range(150,180)
         f_state.set_transform(xform)
         set_applied_force(Vector2(0,0))
 
@@ -137,15 +137,30 @@ func scoring(delta):
         respawn()
 
 
-func spawning(delta):
-    spawning_timer -= delta
+#func spawning(delta):
+#    spawning_timer -= delta
+#
+#    if spawning_timer > 1.5:
+#        apply_impulse(Vector2(), Vector2(0.7, 1).normalized() * 3500 * delta)
+#    elif spawning_timer > 0.3:
+#        apply_impulse(Vector2(), Vector2(0.2, 1).normalized() * 3500 * delta)
+#    elif spawning_timer > 0:
+#        apply_impulse(Vector2(), Vector2(-0.2, -1).normalized() * 500 * delta)
+#    else:
+#        self.linear_velocity = Vector2(0,0)
+#        enter_playing_state()
 
-    if spawning_timer > 1.5:
-        apply_impulse(Vector2(), Vector2(0.7, 1).normalized() * 3500 * delta)
-    elif spawning_timer > 0.3:
-        apply_impulse(Vector2(), Vector2(0.2, 1).normalized() * 3500 * delta)
-    elif spawning_timer > 0:
-        apply_impulse(Vector2(), Vector2(-0.2, -1).normalized() * 500 * delta)
+func spawning(delta):
+    if wait:  # Terrible hack because we need to wait a frame (too many game loops)
+        wait = false
+        return
+    
+    if self.position.x < spawn_destination.x - 300:
+        var vector = Vector2(1, 0.05).normalized()
+        self.apply_impulse(Vector2(), vector * 4500 * delta)
+    elif self.position.y < spawn_destination.y:
+        var vector = (spawn_destination - self.position).normalized()
+        self.apply_impulse(Vector2(), vector * 2500 * delta)
     else:
         self.linear_velocity = Vector2(0,0)
         enter_playing_state()
@@ -164,8 +179,9 @@ func enter_playing_state():
 
 func respawn():
     self.linear_velocity = Vector2(0,0)
-    spawning_timer = 2
     state = STATE.MoveToRespawn
+    wait = true
+    spawn_destination = Vector2(rand_range(740, 1280), rand_range(320, 1100))
 
 func entered_score_zone():
     self.set_collision_mask(0)
