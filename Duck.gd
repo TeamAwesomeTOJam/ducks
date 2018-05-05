@@ -12,7 +12,7 @@ func _ready():
 
 func add_child_duck(_child): 
     if child: 
-        return
+        return false
     
     joint = PinJoint2D.new()
     joint.set_name('joint')
@@ -22,6 +22,8 @@ func add_child_duck(_child):
     
     _child.parent = self
     child = _child
+    
+    return true
     
 
 func remove_child_duck():

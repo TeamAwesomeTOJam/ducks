@@ -170,3 +170,25 @@ func entered_score_zone():
     self.set_collision_layer(0)
     scoring_timer = 3.0
     state = STATE.Scoring
+
+var joint = null
+func add_child_duck(duck):
+    if duck.player == self:
+        return 
+        
+    if !tail_duck: 
+        tail_duck = duck
+            
+        joint = PinJoint2D.new()
+        joint.set_name('joint')
+        joint.set_node_a('..')
+        joint.set_node_b(duck.get_path())
+        add_child(joint)
+    else:
+        tail_duck.add_child_duck(duck)
+        tail_duck = duck
+
+
+func _on_DuckCaptureArea_body_entered(body):
+    if body.get_script().get_path() == 'res://Duck.gd':
+        add_child_duck(body)

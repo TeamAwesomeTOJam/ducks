@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Duck.tscn" type="PackedScene" id=2]
@@ -8,7 +8,12 @@
 custom_solver_bias = 0.0
 radius = 22.942
 
-[node name="Player" type="RigidBody2D"]
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 34.2845
+
+[node name="Player" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -42,8 +47,24 @@ BOOST_TIME = 0.2
 
 shape = SubResource( 1 )
 
+[node name="DuckCaptureArea" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuckCaptureArea" index="0"]
+
+shape = SubResource( 2 )
+
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
 
 [connection signal="body_shape_entered" from="." to="." method="_on_Player_body_shape_entered"]
+
+[connection signal="body_entered" from="DuckCaptureArea" to="." method="_on_DuckCaptureArea_body_entered"]
 
 
