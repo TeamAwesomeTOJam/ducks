@@ -175,10 +175,10 @@ var joint = null
 func add_child_duck(duck):
     if duck.player == self:
         return 
-    print('Hello')
         
     if !tail_duck: 
         tail_duck = duck
+        tail_duck.player = self
             
         joint = PinJoint2D.new()
         joint.set_name('joint')
@@ -188,6 +188,7 @@ func add_child_duck(duck):
     else:
         tail_duck.add_child_duck(duck)
         tail_duck = duck
+        tail_duck.player = self
 
 
 func _on_DuckCaptureArea_body_entered(body):
