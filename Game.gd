@@ -14,10 +14,6 @@ enum STATE {
     game,
 }
 
-var IDLE = 'idle'
-var PRE_GAME = 'pre_game'
-var GAME = 'game'
-
 var state = null
 var number_of_active_players = 0
 
