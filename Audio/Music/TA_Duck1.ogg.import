@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TA_Duck1.ogg-e28bcb92089402dd204f3b460c7f8f9b.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/TA_Duck1.ogg"
+source_md5="8b92653b065feef797535febb51c8300"
+
+dest_files=[ "res://.import/TA_Duck1.ogg-e28bcb92089402dd204f3b460c7f8f9b.oggstr" ]
+dest_md5="4c2dedee1387d5b314c2913ba337322b"
+
+[params]
+
+loop=true
+loop_offset=0
