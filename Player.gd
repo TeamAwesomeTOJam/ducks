@@ -3,6 +3,7 @@ extends RigidBody2D
 export (int) var SPEED = 20000
 export (int) var MAX_SPEED = 500
 export (int) var PLAYER_NUMBER = 0
+export (float) var BOOST_FACTOR = 2
 export (PackedScene) var Duck
 
 var tail_duck = null
@@ -28,8 +29,8 @@ func _ready():
     
     enter_playing_state()
 
-func get_action(dir):
-    return "p" + str(PLAYER_NUMBER) + dir
+func get_action(action):
+    return "p" + str(PLAYER_NUMBER) + action
 
 func _process(delta):
     if state == STATE.Playing:
@@ -92,16 +93,20 @@ func playing(delta):
 
     var impulse_vector = analog_impulse_vector if analog_impulse_vector.length() > LEFT_ANALOG_DEADZONE else digital_impulse_vector
     
+    var max_speed = MAX_SPEED
     if impulse_vector.length() > 0:
         impulse_vector = impulse_vector.normalized() * SPEED
+        if Input.is_action_pressed(get_action('boost')):
+            impulse_vector *= BOOST_FACTOR
+            max_speed *= BOOST_FACTOR
     #else:
     #    impulse_vector = - linear_velocity.normalized() * SPEED
     
     apply_impulse(Vector2(), impulse_vector * delta)
     
-    if get_linear_velocity().length() > MAX_SPEED + 10:
+    if get_linear_velocity().length() > max_speed + 10:
         var new_speed = get_linear_velocity().normalized()
-        new_speed *= MAX_SPEED
+        new_speed *= max_speed
         set_linear_velocity(new_speed)
     
     if Input.is_action_just_pressed(get_action('duck')):
