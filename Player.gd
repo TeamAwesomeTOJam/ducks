@@ -22,6 +22,7 @@ var scoring_timer
 var spawning_timer
 var screensize
 var DEFAULT_COLLISION_MASK = 1
+var DEFAULT_COLLISION_LAYER = 1
 
 func _ready():
     screensize = get_viewport_rect().size
@@ -138,7 +139,7 @@ func spawning(delta):
 
 func enter_playing_state():
     self.set_collision_mask(DEFAULT_COLLISION_MASK)
-    self.set_collision_layer(DEFAULT_COLLISION_MASK)
+    self.set_collision_layer(DEFAULT_COLLISION_LAYER)
     state = STATE.Playing
 
 func respawn():
