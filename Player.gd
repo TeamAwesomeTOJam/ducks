@@ -10,7 +10,6 @@ var tail_duck = null
 var state
 
 var LEFT_ANALOG_DEADZONE = 0.25
-var SCORING_TIME = 3.0
 
 enum STATE {
     Playing,
@@ -40,14 +39,12 @@ func _process(delta):
     elif state == STATE.Spawning:
         spawning(delta)
     
-    if Input.is_action_just_pressed(get_action('duck')):
-        add_duck(Duck.instance())
 
 func _integrate_forces(f_state):
     if state == STATE.MoveToRespawn:        
         var xform = f_state.get_transform()
-        xform.origin.x = 50
-        xform.origin.y = 50
+        xform.origin.x = -50
+        xform.origin.y = -50
         f_state.set_transform(xform)
         set_applied_force(Vector2(0,0))
         
@@ -125,8 +122,10 @@ func scoring(delta):
 func spawning(delta):
     spawning_timer -= delta
     
-    if spawning_timer > 0.3:
-        apply_impulse(Vector2(), Vector2(0.2, 1).normalized() * 2000 * delta)
+    if spawning_timer > 1.5:
+        apply_impulse(Vector2(), Vector2(0.7, 1).normalized() * 3500 * delta)
+    elif spawning_timer > 0.3:
+        apply_impulse(Vector2(), Vector2(0.2, 1).normalized() * 3500 * delta)
     elif spawning_timer > 0:
         apply_impulse(Vector2(), Vector2(-0.2, -1).normalized() * 500 * delta)
     else:
@@ -138,16 +137,17 @@ func spawning(delta):
 ###
 
 func enter_playing_state():
-    state = STATE.Playing
     self.set_collision_mask(DEFAULT_COLLISION_MASK)
+    self.set_collision_layer(DEFAULT_COLLISION_MASK)
+    state = STATE.Playing
 
 func respawn():
     self.linear_velocity = Vector2(0,0)
-    spawning_timer = 1
+    spawning_timer = 2
     state = STATE.MoveToRespawn
-
 
 func entered_score_zone():
     self.set_collision_mask(0)
+    self.set_collision_layer(0)
+    scoring_timer = 3.0
     state = STATE.Scoring
-    scoring_timer = SCORING_TIME

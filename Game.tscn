@@ -21,6 +21,7 @@ Player = ExtResource( 2 )
 
 position = Vector2( 674.792, 346.815 )
 BOOST_FACTOR = 2
+_sections_unfolded = [ "Collision", "Linear", "Transform" ]
 
 [node name="Player1" parent="." index="1" instance=ExtResource( 2 )]
 
