@@ -8,24 +8,25 @@ export (PackedScene) var Duck
 var tail_duck = null
 var state
 
-var FALL_SPEED = 1500
 var LEFT_ANALOG_DEADZONE = 0.25
+var SCORING_TIME = 3.0
 
 enum STATE {
     Playing,
     Scoring,
+    MoveToRespawn,
     Spawning
 }
 
 var scoring_timer
 var spawning_timer
-
 var screensize
+var DEFAULT_COLLISION_MASK = 1
 
 func _ready():
     screensize = get_viewport_rect().size
-    state = STATE.Playing
     
+    enter_playing_state()
 
 func get_action(dir):
     return "p" + str(PLAYER_NUMBER) + dir
@@ -33,14 +34,23 @@ func get_action(dir):
 func _process(delta):
     if state == STATE.Playing:
         playing(delta)
-    if state == STATE.Scoring:
+    elif state == STATE.Scoring:
         scoring(delta)
-    if state == STATE.Spawning:
+    elif state == STATE.Spawning:
         spawning(delta)
     
     if Input.is_action_just_pressed(get_action('duck')):
         add_duck(Duck.instance())
-    
+
+func _integrate_forces(f_state):
+    if state == STATE.MoveToRespawn:        
+        var xform = f_state.get_transform()
+        xform.origin.x = 50
+        xform.origin.y = 50
+        f_state.set_transform(xform)
+        set_applied_force(Vector2(0,0))
+        
+        state = STATE.Spawning
 
 func add_duck(duck):
     if not tail_duck:
@@ -99,32 +109,40 @@ func playing(delta):
     
 
 func scoring(delta):
-    apply_impulse(Vector2(), Vector2(0, 1).normalized() * FALL_SPEED * 5 * delta)
     scoring_timer -= delta
+
+    apply_impulse(Vector2(), Vector2(0, 1).normalized() * 4500 * delta)
+
     if scoring_timer < 0:
         respawn()
         
         
 func spawning(delta):
-    apply_impulse(Vector2(), Vector2(0.5, 1).normalized() * FALL_SPEED * delta)
-    
     spawning_timer -= delta
-    if(spawning_timer < 0):
+    
+    if spawning_timer > 0.3:
+        apply_impulse(Vector2(), Vector2(0.2, 1).normalized() * 2000 * delta)
+    elif spawning_timer > 0:
+        apply_impulse(Vector2(), Vector2(-0.2, -1).normalized() * 500 * delta)
+    else:
         self.linear_velocity = Vector2(0,0)
-        state = STATE.Playing
+        enter_playing_state()
         
 ###
 # State Entry Methods
 ###
 
+func enter_playing_state():
+    state = STATE.Playing
+    self.set_collision_mask(DEFAULT_COLLISION_MASK)
+
 func respawn():
-    # Set player position to top of the waterfall
-    self.position = Vector2(-50,-50)
     self.linear_velocity = Vector2(0,0)
     spawning_timer = 1
-    state = STATE.Spawning
+    state = STATE.MoveToRespawn
 
 
 func entered_score_zone():
+    self.set_collision_mask(0)
     state = STATE.Scoring
-    scoring_timer = 3
+    scoring_timer = SCORING_TIME

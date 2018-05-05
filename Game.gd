@@ -1,5 +1,6 @@
 extends Node
 
+export (PackedScene) var Player
 
 var game_handle_time = null
 var time_remaining = 0.0
@@ -73,8 +74,8 @@ func _process(delta):
     # TODO: REMOVE THIS AT SOME POINT, OR DON'T I'M NOT THE BOSS OF YOU.
     if state == STATE.idle && Input.is_action_pressed('ui_up'):
         pre_game()
+    
 
-
-func _on_ScoringZone_body_entered(body):
+func _on_ScoringArea_body_entered(body):
     if(body.has_method('entered_score_zone')):
         body.entered_score_zone()
