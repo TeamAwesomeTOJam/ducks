@@ -175,6 +175,7 @@ var joint = null
 func add_child_duck(duck):
     if duck.player == self:
         return 
+    print('Hello')
         
     if !tail_duck: 
         tail_duck = duck
@@ -190,5 +191,5 @@ func add_child_duck(duck):
 
 
 func _on_DuckCaptureArea_body_entered(body):
-    if body.get_script().get_path() == 'res://Duck.gd':
+    if body.has_method('is_duck'):
         add_child_duck(body)

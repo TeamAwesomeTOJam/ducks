@@ -8,6 +8,9 @@ var joint = null
 
 func _ready():
     pass
+    
+func is_duck():
+    pass
 
 
 func add_child_duck(_child): 
