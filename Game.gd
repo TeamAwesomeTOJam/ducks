@@ -1,6 +1,7 @@
 extends Node
 
 export (PackedScene) var Player
+export (PackedScene) var Duck
 
 var game_handle_time = null
 var time_remaining = 0.0
@@ -27,6 +28,7 @@ func pre_game():
 func start_game():
     $HUD.start_game( MAX_TIME_GAME)
     update_state(STATE.game)
+    spawn_duck()
 
 
 func end_game():
@@ -62,6 +64,16 @@ func update_time(delta):
             elif state == STATE.game:
                 end_game()
     
+func spawn_duck():
+    var duck = Duck.instance()
+    duck.set_name('duck')
+    
+    duck.position = Vector2(rand_range(0, 1280), rand_range(0, 1280))
+    
+    self.add_child(duck)
+    duck.set_owner(self)
+    
+    # TODO: Set duck state to spawning, spawn them behind the waterfall, spawn them in a random area
 
 func _ready():
     update_state(STATE.idle)
@@ -74,6 +86,10 @@ func _process(delta):
     # TODO: REMOVE THIS AT SOME POINT, OR DON'T I'M NOT THE BOSS OF YOU.
     if state == STATE.idle && Input.is_action_pressed('ui_up'):
         pre_game()
+        
+    if Input.is_action_just_pressed('p0duck'):
+        spawn_duck()
+    
     
 
 func _on_ScoringArea_body_entered(body):
