@@ -1,34 +1,33 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Duck.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Art/Player/teamawesome_default_duck_down.png" type="Texture" id=3]
-[ext_resource path="res://Art/Player/teamawesome_default_duck_up.png" type="Texture" id=4]
-[ext_resource path="res://Art/Player/teamawesome_default_duck_left.png" type="Texture" id=5]
-[ext_resource path="res://Art/Player/teamawesome_default_duck_right.png" type="Texture" id=6]
-[ext_resource path="res://LinkedList.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Art/Player/teamawesome_default_duck_left.png" type="Texture" id=3]
+[ext_resource path="res://Art/Player/teamawesome_default_duck_right.png" type="Texture" id=4]
+[ext_resource path="res://Art/Player/teamawesome_default_duck_down.png" type="Texture" id=5]
+[ext_resource path="res://Art/Player/teamawesome_default_duck_up.png" type="Texture" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "p0_down",
+"name": "p0_left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "p0_up",
+"name": "p0_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "p0_left",
+"name": "p0_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "p0_right",
+"name": "p0_up",
 "speed": 5.0
 } ]
 
@@ -42,7 +41,7 @@ radius = 22.942
 custom_solver_bias = 0.0
 radius = 34.2845
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -95,8 +94,6 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DuckCaptureArea" index="0"]
 
 shape = SubResource( 3 )
-
-[node name="LinkedList" parent="." index="3" instance=ExtResource( 7 )]
 
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
 
