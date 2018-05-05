@@ -25,12 +25,13 @@ contact_monitor = false
 sleeping = false
 can_sleep = true
 linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
+linear_damp = 4.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Linear", "Transform" ]
-SPEED = 500
+SPEED = 20000
+MAX_SPEED = 1000
 PLAYER_NUMBER = 0
 Duck = ExtResource( 2 )
 
