@@ -41,7 +41,7 @@ func _process(delta):
     
     #position += velocity * delta
     apply_impulse(Vector2(), velocity * delta)
-    if PLAYER_NUMBER == 1 and Input.is_action_just_pressed('duck'):
+    if Input.is_action_just_pressed(get_action('duck')):
         add_duck(Duck.instance())
     
 
