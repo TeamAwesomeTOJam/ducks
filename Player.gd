@@ -122,8 +122,8 @@ func playing(delta):
         new_speed *= max_speed
         set_linear_velocity(new_speed)
 
-    if Input.is_action_just_pressed(get_action('duck')):
-        add_duck(Duck.instance())
+    #if Input.is_action_just_pressed(get_action('duck')):
+    #    add_duck(Duck.instance())
 
 
 func scoring(delta):

@@ -2,11 +2,11 @@
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Terrain/Boarders.tscn" type="PackedScene" id=3]
-[ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Audio/Music/TA_Duck1.ogg" type="AudioStream" id=5]
-[ext_resource path="res://Terrain/Rock.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Duck.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Duck.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Terrain/Boarders.tscn" type="PackedScene" id=4]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Audio/Music/TA_Duck1.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Terrain/Rock.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -17,6 +17,7 @@ extents = Vector2( 60, 700 )
 
 script = ExtResource( 1 )
 Player = ExtResource( 2 )
+Duck = ExtResource( 3 )
 
 [node name="Player0" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -28,9 +29,9 @@ _sections_unfolded = [ "Collision", "Linear", "Transform" ]
 position = Vector2( 443.042, 350.314 )
 PLAYER_NUMBER = 1
 
-[node name="Boarders" parent="." index="2" instance=ExtResource( 3 )]
+[node name="Boarders" parent="." index="2" instance=ExtResource( 4 )]
 
-[node name="HUD" parent="." index="3" instance=ExtResource( 4 )]
+[node name="HUD" parent="." index="3" instance=ExtResource( 5 )]
 
 [node name="ScoringArea" type="Area2D" parent="." index="4"]
 
@@ -56,18 +57,18 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6"]
 
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
 bus = "Master"
 _sections_unfolded = [ "Pause" ]
 
-[node name="Rock" parent="." index="7" instance=ExtResource( 6 )]
+[node name="Rock" parent="." index="7" instance=ExtResource( 7 )]
 
 position = Vector2( 709.624, 607.164 )
 
-[node name="Duck" parent="." index="8" instance=ExtResource( 7 )]
+[node name="Duck" parent="." index="8" instance=ExtResource( 3 )]
 
 position = Vector2( 1348.14, 478.052 )
 
