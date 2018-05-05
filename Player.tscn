@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Duck.tscn" type="PackedScene" id=2]
-[ext_resource path="res://LinkedList.tscn" type="PackedScene" id=3]
-[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -79,10 +78,10 @@ audio_bus_name = "Master"
 
 shape = SubResource( 3 )
 
-[node name="LinkedList" parent="." index="2" instance=ExtResource( 3 )]
-
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
 
 [connection signal="body_shape_entered" from="." to="." method="_on_Player_body_shape_entered"]
 
 [connection signal="body_entered" from="DuckCaptureArea" to="." method="_on_DuckCaptureArea_body_entered"]
+
+

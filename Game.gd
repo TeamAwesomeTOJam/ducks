@@ -28,7 +28,6 @@ func pre_game():
 func start_game():
     $HUD.start_game( MAX_TIME_GAME)
     update_state(STATE.game)
-    spawn_duck()
 
 
 func end_game():
