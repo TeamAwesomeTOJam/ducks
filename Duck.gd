@@ -1,25 +1,41 @@
 extends RigidBody2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var player = null
+
+var parent = null
+var child = null
+var joint = null
 
 func _ready():
-    # Called every time the node is added to the scene.
-    # Initialization here
     pass
 
-func add_duck(duck):
-        var spring = PinJoint2D.new()
-        spring.set_name('spring')
-        duck.set_name('duck')
-        duck.position = Vector2(0, 30)
-        self.add_child(duck)
-        duck.set_owner(self)
-        self.add_child(spring)
-        spring.set_node_a('..')
-        spring.set_node_b('../duck')
-        #spring.set_length(30)
-        #spring.set_stiffness(40)
-        #spring.set_damping(1)
-        #spring.set_rest_length(0)
+
+func add_child_duck(_child): 
+    if child: 
+        return
+    
+    joint = PinJoint2D.new()
+    joint.set_name('joint')
+    joint.set_node_a('..')
+    joint.set_node_b(_child.get_path())
+    add_child(joint)
+    
+    _child.parent = self
+    child = _child
+    
+
+func remove_child_duck():
+    if !child:
+        return
+        
+    joint.free()
+    
+    var _child = child
+    _child.parent = null
+    child = null
+    
+    return _child
+
+
+func _on_Duck_body_entered(body):
+    body

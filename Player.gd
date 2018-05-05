@@ -42,6 +42,8 @@ func _process(delta):
     
     if Input.is_action_just_pressed(get_action('duck')):
         add_duck(Duck.instance())
+#    print(get_colliding_bodies().size())
+        
 
 func _integrate_forces(f_state):
     if state == STATE.MoveToRespawn:        
@@ -151,3 +153,11 @@ func entered_score_zone():
     self.set_collision_mask(0)
     state = STATE.Scoring
     scoring_timer = SCORING_TIME
+
+
+func _on_Player_body_entered(body):
+    print(body)
+
+
+func _on_Player_body_shape_entered(body_id, body, body_shape, local_shape):
+    print(body)
