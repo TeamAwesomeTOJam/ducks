@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Terrain/Boarders.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Audio/Music/TA_Duck1.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Terrain/Rock.tscn" type="PackedScene" id=6]
 
-[node name="Game" type="Node" index="0"]
+[node name="Game" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -27,8 +28,13 @@ PLAYER_NUMBER = 1
 
 stream = ExtResource( 5 )
 volume_db = 0.0
-autoplay = true
+autoplay = false
 mix_target = 0
 bus = "Master"
+_sections_unfolded = [ "Pause" ]
+
+[node name="Rock" parent="." index="5" instance=ExtResource( 6 )]
+
+position = Vector2( 709.624, 607.164 )
 
 

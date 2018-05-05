@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="Duck" type="RigidBody2D"]
+[node name="Duck" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -24,7 +24,7 @@ contact_monitor = false
 sleeping = false
 can_sleep = true
 linear_velocity = Vector2( 0, 0 )
-linear_damp = 0.0
+linear_damp = 10.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )

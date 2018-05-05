@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 export (int) var SPEED = 20000
-export (int) var MAX_SPEED = 1000
+export (int) var MAX_SPEED = 500
 export (int) var PLAYER_NUMBER = 0
 export (PackedScene) var Duck
 
