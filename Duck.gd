@@ -83,9 +83,9 @@ func spawning(delta):
     #if spawning_timer > 0:
     #    print(spawning_timer)
     #    apply_impulse(Vector2(), Vector2(0.7, 1).normalized() * 10000 * delta)
-    if self.position.x < spawn_destination.x - 100:
+    if self.position.x < spawn_destination.x - 300:
         var vector = Vector2(1, 0.2).normalized()
-        self.apply_impulse(Vector2(), vector * 10000 * delta)
+        self.apply_impulse(Vector2(), vector * 20000 * delta)
     elif self.position.y < spawn_destination.y:
         var vector = (spawn_destination - self.position).normalized()
         self.apply_impulse(Vector2(), vector * 10000 * delta)
