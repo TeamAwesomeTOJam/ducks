@@ -127,6 +127,11 @@ func enter_playing_state():
     self.set_collision_layer(DEFAULT_COLLISION_LAYER)
     state = STATE.Playing
 
+func set_collision_stuff(mask, layer):
+    self.set_collision_mask(mask)
+    self.set_collision_layer(layer)
+    if self.child:
+        self.child.set_collision_stuff(mask, layer)
 
 func _on_Duck_body_entered(body):
     pass
