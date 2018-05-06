@@ -31,12 +31,12 @@ func is_duck():
 func _process(delta):
     if state == STATE.Playing:
         playing(delta)
+        z_index = position.y
     elif state == STATE.Spawning:
         spawning(delta)
     elif state == STATE.Scoring:
         scoring(delta)
         
-    z_index = position.y
 
 
 func _integrate_forces(f_state):
@@ -88,6 +88,7 @@ func respawn():
     self.linear_velocity = Vector2(0,0)
     state = STATE.MoveToRespawn
     spawn_destination = Vector2(rand_range(740, 1280), rand_range(320, 1100))
+    z_index = spawn_destination.y
 
 func enter_playing_state():
     self.set_collision_mask(DEFAULT_COLLISION_MASK)

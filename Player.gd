@@ -195,6 +195,7 @@ func respawn():
     state = STATE.MoveToRespawn
     wait = true
     spawn_destination = Vector2(rand_range(740, 1280), rand_range(320, 1100))
+    z_index = spawn_destination.y
 
 func entered_score_zone():
     self.set_collision_mask(0)
