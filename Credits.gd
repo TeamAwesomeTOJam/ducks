@@ -109,237 +109,279 @@ func _ready():
     
     Commits:
 
-delete commented code     -cpoll
 
-hook up boost to xbox     -cpoll
+initial commit   -Daniel
 
-fix scoring terrain catching issue     -cpoll
+more ignore   -Daniel
 
-touch your own duck     -Daniel Lister
+Godot stuff   -Daniel
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Daniel Lister
+ducks that follow you   -Daniel
 
-some duck collecting     -Daniel Lister
+ducks that follow you   -Daniel
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Aiden Storey
+add analog support   -Cristian
 
-Removed current use of game end     -Aiden Storey
+change resolution to 1080   -Cristian
 
-Added better handling of postgame     -Aiden Storey
+Added game script   -Aiden
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Daniel Lister
+broken duck adding   -Daniel
 
-following duck fix     -Daniel Lister
+add terrain   -Cristian
 
-fix player sprites     -cpoll
+Added basic hud   -Aiden
 
-a     -Aiden Storey
+pin joints   -Daniel
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Aiden Storey
+what   -Daniel
 
-Merging I guess     -Aiden Storey
+Updated hud   -Aiden
 
-Added end of game stuff     -Aiden Storey
+Added hud to scene   -Aiden
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -cpoll
+resolution   -Daniel
 
-add auto spawning of ducks     -cpoll
+boarders   -Daniel
 
-fix missing following duck     -Daniel Lister
+boarders   -Daniel
 
-merge     -Daniel Lister
+movement   -Daniel
 
-basic collecting     -Daniel Lister
+fix main scene   -Daniel
 
-Changed scoring angle     -Aiden Storey
+inb4 merge conflicts   -Aiden
 
-Fixed z-index for spawning     -Aiden Storey
+fixed   -Aiden
 
-Added z-index updating     -Aiden Storey
+Added game loop   -Aiden
 
-readd game     -cpoll
+Fixed default active players   -Aiden
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -cpoll
+add scoring logic   -Cristian
 
-Fixed timer     -Aiden Storey
+Im not sure   -Daniel
 
-add sprites for all players     -cpoll
+Changed state to enum   -Aiden
 
-Removed linked list     -Aiden Storey
+Removed old state   -Aiden
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Aiden Storey
+Godot   -Aiden
 
-Tightening     -Aiden Storey
+Fixed game scene   -Aiden
 
-dsfljfhfa     -cpoll
+tighter movement/graphics   -Daniel
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -cpoll
+music   -Daniel
 
-add duck sprite     -cpoll
+rock and damping ducks   -Daniel
 
-linked list     -Daniel Lister
+add scoring   -Cristian
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Aiden Storey
+boost   -Daniel
 
- Fixed linked list     -Aiden Storey
+tighten up the waterfalls   -Cristian
 
-rocks     -Daniel Lister
+add layers   -Cristian
 
-no duck spin     -Daniel Lister
+boosting   -Daniel
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Daniel Lister
+Tightened up duck handling   -Aiden
 
-move hud     -Daniel Lister
+godot stuff?   -Daniel
 
-improve player spawning     -cpoll
+Added picking up ducks   -Aiden
 
-juice up duck spawning     -cpoll
+Changed handling collision with duck   -Aiden
 
-add borders for new terrain     -cpoll
+Tightened player colliding with own duck   -Aiden
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Aiden Storey
+add duck spawning   -Cristian
 
-Removed duck stealing and added basic linked list     -Aiden Storey
+add duck waterfall spawning   -Cristian
 
-add sprites for ducks     -cpoll
+add duck spawning arcs   -Cristian
 
-add bg assets     -cpoll
+Tightened duck stealing   -Aiden
 
-Tightened player stealing     -Aiden Storey
+Fixed that thing   -Aiden
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Aiden Storey
+masking   -Daniel
 
-Added set player     -Aiden Storey
+godot stuff   -Daniel
 
-recursive collision mask     -Daniel Lister
+masking on ducks   -Daniel
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Daniel Lister
+remove starting ducks   -Daniel
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Aiden Storey
+fix duck spawn   -Daniel
 
-clean up mask     -Daniel Lister
+Tightening   -Aiden
 
-Tightening     -Aiden Storey
+clean up mask   -Daniel
 
-fix duck spawn     -Daniel Lister
+recursive collision mask   -Daniel
 
-remove starting ducks     -Daniel Lister
+Added set player   -Aiden
 
-masking on ducks     -Daniel Lister
+Tightened player stealing   -Aiden
 
-godot stuff     -Daniel Lister
+add bg assets   -Cristian
 
-masking     -Daniel Lister
+add sprites for ducks   -Cristian
 
-Fixed that thing     -Aiden Storey
+Removed duck stealing and added basic linked list   -Aiden
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Aiden Storey
+add borders for new terrain   -Cristian
 
-Tightened duck stealing     -Aiden Storey
+juice up duck spawning   -Cristian
 
-add duck spawning arcs     -cpoll
+improve player spawning   -Cristian
 
-add duck waterfall spawning     -cpoll
+move hud   -Daniel
 
-add duck spawning     -cpoll
+no duck spin   -Daniel
 
-Tightened player colliding with own duck     -Aiden Storey
+rocks   -Daniel
 
-Changed handling collision with duck     -Aiden Storey
+ Fixed linked list   -Aiden
 
-Added picking up ducks     -Aiden Storey
+linked list   -Daniel
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Aiden Storey
+add duck sprite   -Cristian
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Aiden Storey
+dsfljfhfa   -Cristian
 
-godot stuff?     -Daniel Lister
+Tightening   -Aiden
 
-Tightened up duck handling     -Aiden Storey
+Removed linked list   -Aiden
 
-boosting     -Daniel Lister
+add sprites for all players   -Cristian
 
-add layers     -cpoll
+Fixed timer   -Aiden
 
-tighten up the waterfalls     -cpoll
+readd game   -Cristian
 
-boost     -Daniel Lister
+Added z-index updating   -Aiden
 
-add scoring     -cpoll
+Fixed z-index for spawning   -Aiden
 
-rock and damping ducks     -Daniel Lister
+Changed scoring angle   -Aiden
 
-music     -Daniel Lister
+basic collecting   -Daniel
 
-tighter movement/graphics     -Daniel Lister
+fix missing following duck   -Daniel
 
-Fixed game scene     -Aiden Storey
+add auto spawning of ducks   -Cristian
 
-Godot     -Aiden Storey
+Added end of game stuff   -Aiden
 
-Removed old state     -Aiden Storey
+Merging I guess   -Aiden
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Aiden Storey
+a   -Aiden
 
-Changed state to enum     -Aiden Storey
+fix player sprites   -Cristian
 
-Im not sure     -Daniel Lister
+following duck fix   -Daniel
 
-merge     -Daniel Lister
+Added better handling of postgame   -Aiden
 
-add scoring logic     -cpoll
+Removed current use of game end   -Aiden
 
-Fixed default active players     -Aiden Storey
+some duck collecting   -Daniel
 
-Added game loop     -Aiden Storey
+touch your own duck   -Daniel
 
-fixed     -Aiden Storey
+fix scoring terrain catching issue   -Cristian
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Aiden Storey
+hook up boost to xbox   -Cristian
 
-inb4 merge conflicts     -Aiden Storey
+delete commented code   -Cristian
 
-fix main scene     -Daniel Lister
+add credits   -Cristian
 
-movement     -Daniel Lister
+add scoring   -Cristian
 
-boarders     -Daniel Lister
+ducks can pass through eachother   -Daniel
 
-boarders     -Daniel Lister
+Added splash animation and bottom rocks overlay   -Aiden
 
-resolution     -Daniel Lister
+juice the font   -Cristian
 
-Merge branch 'master' of github.com:TeamAwesomeTOJam/ducks     -Aiden Storey
+Fixed constantly changing frames count   -Aiden
 
-Added hud to scene     -Aiden Storey
+fix fonts   -Cristian
 
-Updated hud     -Aiden Storey
+change movement   -Cristian
 
-what     -Daniel Lister
+duck tails   -Daniel
 
-pin joints     -Daniel Lister
+fix respawn velocity   -Cristian
 
-Added basic hud     -Aiden Storey
+duck depth   -Daniel
 
-add terrain     -cpoll
+fix animation direction   -Daniel
 
-broken duck adding     -Daniel Lister
+follow duck rotation   -Daniel
 
-Added game script     -Aiden Storey
+add credits   -Cristian
 
-change resolution to 1080     -cpoll
+make esc quit   -Daniel
 
-add analog support     -cpoll
+fix spawn jamming maybe   -Cristian
 
-ducks that follow you     -Daniel Lister
+Tightened post_game   -Aiden
 
-ducks that follow you     -Daniel Lister
+final duck rotation   -Daniel
 
-Godot stuff     -Daniel Lister
+fix collion shapes and z sorting   -Daniel
 
-more ignore     -Daniel Lister
+Tightened up the game loop   -Aiden
 
-initial commit     -Daniel Lister
+juicier credits   -Cristian
+
+Tightened the tightening   -Aiden
+
+add boost indicator   -Cristian
+
+Updated game time   -Aiden
+
+Loosened the font size   -Aiden
+
+recolor boost hint   -Cristian
+
+Added bob and fixed conflict   -Aiden
+
+SFX   -Daniel
+
+Added bob   -Aiden
+
+add goat to credits   -Cristian
+
+readd boost hint   -Cristian
+
+go behind rocks again   -Daniel
+
+fix spawn arcs   -Cristian
+
+fix spawn again   -Cristian
+
+add boost label AGAIN   -Cristian
+
+Added text   -Aiden
+
+tighten up the boost   -Cristian
+
+redamp duckies   -Cristian
+
+fix spawn finally I hope   -Cristian
+
+perfectly playable   -Cristian
+
+duckworthy   -Cristian
+
+fin   -Duckman
+
     
     
     
