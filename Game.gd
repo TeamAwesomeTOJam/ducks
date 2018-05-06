@@ -7,10 +7,11 @@ export (PackedScene) var Duck
 
 var game_handle_time = null
 var time_remaining = 0.0
+var spawn_timer
 
 var MAX_PLAYERS = 4
-var MAX_TIME_PRE_GAME = 5.0
-var MAX_TIME_GAME = 101.0
+var MAX_TIME_PRE_GAME = 3.0
+var MAX_TIME_GAME = 60.0
 
 enum STATE {
     idle,
@@ -29,7 +30,7 @@ func pre_game():
 
 
 func start_game():
-    $HUD.start_game( MAX_TIME_GAME)
+    $HUD.start_game(MAX_TIME_GAME)
     update_state(STATE.game)
 
 
@@ -54,6 +55,7 @@ func update_state(_state):
         time_remaining = MAX_TIME_PRE_GAME
     elif _state == STATE.game:
         time_remaining = MAX_TIME_GAME
+        spawn_timer = 0
         
     state = _state
 
@@ -97,8 +99,20 @@ func _process(delta):
         
     if Input.is_action_just_pressed('p0duck'):
         spawn_duck()
+        
+    if state == STATE.game:
+        game(delta)
     
-    
+func game(delta):
+    spawn_timer += delta
+    if time_remaining > 10:
+        if spawn_timer > 1:
+            spawn_duck()
+            spawn_timer -= 1
+    elif time_remaining > 0:
+        if spawn_timer > 0.5:
+            spawn_duck()
+            spawn_timer -= 0.5
 
 func _on_ScoringArea_body_entered(body):
     if(body.has_method('entered_score_zone')):
