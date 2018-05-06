@@ -206,10 +206,10 @@ func spawning(delta):
         wait = false
         return
     
-    if self.position.x < spawn_destination.x:
-        var vector = Vector2(1, 0.05).normalized()
+    if self.position.x < spawn_destination.x - 300:
+        var vector = Vector2(1, 0.2).normalized()
         self.set_linear_velocity(vector * 900)
-    elif self.position.y < spawn_destination.y:
+    elif self.position.y < spawn_destination.y or self.position.x < spawn_destination.x:
         var vector = (spawn_destination - self.position).normalized()
         self.set_linear_velocity(vector * 1200)
     else:
