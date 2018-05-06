@@ -9,18 +9,23 @@ var SPEED
 
 var DEFAULT_COLLISION_MASK = 15
 var DEFAULT_COLLISION_LAYER = 15
+var child
 
 enum STATE {
     Playing,
     Scoring,
     MoveToRespawn,
-    Spawning
+    Spawning,
+    Following
 }
 
 func _ready():
-    SPEED = 250
-    respawn()
+    if state != STATE.Following:
+        SPEED = 250
+        respawn()
 
+func set_following():
+    state = STATE.Following
 
 func is_duck():
     pass
@@ -33,6 +38,8 @@ func _process(delta):
         spawning(delta)
     elif state == STATE.Scoring:
         scoring(delta)
+    elif state == STATE.Following:
+        pass
 
 
 func _integrate_forces(f_state):
@@ -44,6 +51,25 @@ func _integrate_forces(f_state):
         set_applied_force(Vector2(0,0))
 
         state = STATE.Spawning
+
+
+func add_duck(duck, behind):
+    if child:
+        print("can't add duck already have child")
+        return
+    child = duck
+    var new_behind = - self.linear_velocity
+    if new_behind.length() == 0:
+        new_behind = behind
+    var spring = PinJoint2D.new()
+    spring.set_name('joint')
+    duck.set_name('duck')
+    duck.position = new_behind.normalized() * 30
+    self.add_child(duck)
+    duck.set_owner(self)
+    self.add_child(spring)
+    spring.set_node_a('..')
+    spring.set_node_b('../duck')
 
 
 ###

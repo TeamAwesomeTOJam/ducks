@@ -59,12 +59,17 @@ func _integrate_forces(f_state):
         state = STATE.Spawning
 
 func add_duck(duck):
+    duck.set_collision_mask(DEFAULT_COLLISION_MASK)
+    duck.set_collision_layer(DEFAULT_COLLISION_LAYER)
+    var behind = - self.linear_velocity
+    if behind.length() == 0:
+        behind = Vector2(0,-1)
     if not tail_duck:
         tail_duck = duck
         var spring = PinJoint2D.new()
         spring.set_name('spring')
         duck.set_name('duck')
-        duck.position = Vector2(0,50)
+        duck.position = behind.normalized() * 50
         self.add_child(duck)
         duck.set_owner(self)
         self.add_child(spring)
@@ -75,7 +80,7 @@ func add_duck(duck):
         #spring.set_damping(1)
         #spring.set_rest_length(0)
     else:
-        tail_duck.add_duck(duck)
+        tail_duck.add_duck(duck, behind)
         tail_duck = duck
 
 ###
@@ -133,9 +138,6 @@ func playing(delta):
         $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_down"
     elif impulse_vector.y < 0 and impulse_vector.y < impulse_vector.x:
         $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_up"
-
-    #if Input.is_action_just_pressed(get_action('duck')):
-    #    add_duck(Duck.instance())
 
 
 func scoring(delta):
@@ -202,5 +204,6 @@ func entered_score_zone():
 
 func _on_DuckCaptureArea_body_entered(body):
     if body.has_method('is_duck'):
-        pass
+        body.queue_free()
+        add_duck(Duck.instance())
     
