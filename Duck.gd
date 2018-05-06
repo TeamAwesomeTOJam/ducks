@@ -7,6 +7,7 @@ var spawn_destination
 
 var direction
 var speed
+var override_velocity
 
 var DEFAULT_COLLISION_MASK = 15
 var DEFAULT_COLLISION_LAYER = 15
