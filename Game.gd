@@ -11,7 +11,7 @@ var spawn_timer
 
 var MAX_PLAYERS = 4
 var MAX_TIME_PRE_GAME = 3.0
-var MAX_TIME_GAME = 60.0
+var MAX_TIME_GAME = 5.0
 
 
 enum STATE {
@@ -59,6 +59,7 @@ func player_ended(player_number):
             top_score = player.my_score
     
         if !players:
+            $HUD.winner()
             top_player.winner()
             last_player_done = true
             time_remaining = 1.5

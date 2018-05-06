@@ -22,6 +22,12 @@ func update_time_game(time_remaining):
 
 func update_time_pre_game(time_remaining):
     $LabelTimePreGame.text = str(ceil(time_remaining))
+   
+var is_winner = false 
+func winner():
+    $LabelTimePreGame.text = "Winner!"
+    $LabelTimePreGame.show()
+    is_winner = true
     
 
 func pre_game(number_of_players, time_remaining):
@@ -44,7 +50,20 @@ func start_game(time_remaining):
 
 func end_game():
     $LabelTimeGame.hide()
-
+    
+var time = 0.0
+func _process(delta):
+    if is_winner:
+        time += delta
+#        $LabelTimePreGame.add_color_override(
+#            "font_color",
+#            Color(
+#                abs(sin(time + 0.25)),
+#                1.0 - abs(sin(time + 0.5)), 
+#                abs(sin(time - 0.25))
+#            )
+#        )
+        $LabelTimePreGame.set_rotation(sin(time) * 0.05)
 
 func _ready():
     player_labels = {
@@ -59,4 +78,5 @@ func _ready():
         label.hide()
         
         $LabelTimeGame.hide()
-        $LabelTimePreGame.hide()
+        $LabelTimePreGame.show()
+        $LabelTimePreGame.text = "Press Start!"
