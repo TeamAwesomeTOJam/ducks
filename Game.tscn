@@ -48,7 +48,7 @@ use_filter = false
 font_data = ExtResource( 15 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="Game" type="Node" index="0"]
+[node name="Game" type="Node"]
 
 script = ExtResource( 1 )
 Player = ExtResource( 2 )
