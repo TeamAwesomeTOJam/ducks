@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://HUD.gd" type="Script" id=1]
-[ext_resource path="res://Freight Train Gangsta.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://frankfrt.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 
-size = 50
+size = 100
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 2 )
@@ -44,7 +44,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_colors" ]
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 [node name="LabelPlayer2" type="Label" parent="." index="1"]
 
