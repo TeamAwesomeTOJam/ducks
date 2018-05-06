@@ -10,7 +10,7 @@ export (float) var BOOST_TIME = 0.2
 
 var collecting
 
-var child_duck
+var child
 var state
 var wait = false
 
@@ -82,10 +82,10 @@ func add_duck(duck):
     var behind = - self.linear_velocity
     if behind.length() == 0:
         behind = Vector2(0,-1)
-    if not child_duck:
-        child_duck = duck
+    if not child:
+        child = duck
         var spring = PinJoint2D.new()
-        spring.set_name('spring')
+        spring.set_name('joint')
         duck.set_name('duck')
         duck.position = behind.normalized() * 50
         self.add_child(duck)
@@ -93,13 +93,14 @@ func add_duck(duck):
         self.add_child(spring)
         spring.set_node_a('..')
         spring.set_node_b('../duck')
-        child_duck = duck
+        child = duck
+        duck.parent = self
         #spring.set_length(50)
         #spring.set_stiffness(40)
         #spring.set_damping(1)
         #spring.set_rest_length(0)
     else:
-        child_duck.add_duck(duck, behind)
+        child.add_duck(duck, behind)
 
 ###
 # STATE METHODS
@@ -231,4 +232,9 @@ func _on_DuckCaptureArea_body_entered(body):
         if body.has_method('is_duck'):
             body.queue_free()
             add_duck(Duck.instance())
+        if body.has_method('is_follow_duck'):
+            var count = body.count()
+            body.kill_me()
+            for x in range(count):
+                add_duck(Duck.instance())
     

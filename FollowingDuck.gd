@@ -6,15 +6,21 @@ extends RigidBody2D
 var child = null
 var parent = null
 
+func is_follow_duck():
+    pass
+
 func count():
     if child:
         return child.count() + 1
     else:
         return 1
 
-func delete():
+func kill_me():
     if child:
-        child.delete()
+        child.kill_me()
+    if parent:
+        parent.get_node('joint').queue_free()
+        parent.child = null
     queue_free()
 
 func _ready():
