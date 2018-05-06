@@ -21,6 +21,7 @@ enum STATE {
     Scoring,
     MoveToRespawn,
     Spawning
+    PostGame,
 }
 
 var scoring_timer
@@ -31,14 +32,23 @@ var boosting
 var screensize
 var DEFAULT_COLLISION_MASK
 var DEFAULT_COLLISION_LAYER
+var direction
+var speed 
 
 func _ready():
+    direction = Vector2(1, rand_range(-0.2, 0.2)).normalized()
+    speed = rand_range(450, 750)
     screensize = get_viewport_rect().size
     DEFAULT_COLLISION_LAYER = 1 << PLAYER_NUMBER
     DEFAULT_COLLISION_MASK = 15 ^ DEFAULT_COLLISION_LAYER
     $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_right"
+    
+    get_parent().connect('game_ended', self, '_game_ended')
 
     enter_playing_state()
+    
+func _game_ended():
+    state = STATE.PostGame
 
 func get_action(action):
     return "p" + str(PLAYER_NUMBER) + action
@@ -51,6 +61,8 @@ func _process(delta):
         scoring(delta)
     elif state == STATE.Spawning:
         spawning(delta)
+    elif state == STATE.PostGame:
+        post_game(delta)
         
     z_index = position.y
 
@@ -182,6 +194,10 @@ func spawning(delta):
     else:
         self.linear_velocity = Vector2(0,0)
         enter_playing_state()
+        
+func post_game(delta):
+    var impulse_vector = direction * speed * 10.0
+    apply_impulse(Vector2(), impulse_vector * delta)
 
 ###
 # State Entry Methods

@@ -17,7 +17,8 @@ enum STATE {
     Playing,
     Scoring,
     MoveToRespawn,
-    Spawning
+    Spawning,
+    PostGame,
 }
 
 func _ready():
@@ -27,7 +28,7 @@ func _ready():
 
 func is_duck():
     pass
-    
+
 
 func _process(delta):
     if state == STATE.Playing:
@@ -37,6 +38,13 @@ func _process(delta):
         spawning(delta)
     elif state == STATE.Scoring:
         scoring(delta)
+    elif state == STATE.PostGame:
+        post_game(delta)
+
+
+func _game_ended():
+    state = STATE.PostGame
+
 
 
 func _integrate_forces(f_state):
@@ -88,7 +96,7 @@ func spawning(delta):
     else:
         self.linear_velocity = Vector2(0,0)
         enter_playing_state()
-        
+
 func scoring(delta):
     scoring_timer -= delta
 
@@ -96,6 +104,10 @@ func scoring(delta):
 
     if scoring_timer < 0:
         self.queue_free()
+
+func post_game(delta):
+    var impulse_vector = direction * speed * 10.0
+    apply_impulse(Vector2(), impulse_vector * delta)
 
 ###
 # State Transitions
