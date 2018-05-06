@@ -33,6 +33,8 @@ var boosting
 var screensize
 var DEFAULT_COLLISION_MASK
 var DEFAULT_COLLISION_LAYER
+var CAPTURE_COLLISION_MASK
+var CAPTURE_COLLISION_LAYER
 var direction
 var speed 
 var is_post_game = false
@@ -47,6 +49,8 @@ func _ready():
     screensize = get_viewport_rect().size
     DEFAULT_COLLISION_LAYER = 1 << PLAYER_NUMBER
     DEFAULT_COLLISION_MASK = 15 ^ DEFAULT_COLLISION_LAYER
+    CAPTURE_COLLISION_MASK = 15
+    CAPTURE_COLLISION_LAYER = 15
     $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_right"
     
     get_parent().connect('game_ended', self, '_game_ended')
@@ -210,6 +214,8 @@ func post_game(delta):
 func enter_playing_state():
     self.set_collision_mask(DEFAULT_COLLISION_MASK)
     self.set_collision_layer(DEFAULT_COLLISION_LAYER)
+    $DuckCaptureArea.set_collision_mask(CAPTURE_COLLISION_MASK)
+    $DuckCaptureArea.set_collision_layer(CAPTURE_COLLISION_LAYER)
     self.boost_timer = 0
     self.boost_wait_timer = 0
     self.boosting = false
@@ -233,6 +239,8 @@ func respawn():
 func entered_score_zone():
     self.set_collision_mask(0)
     self.set_collision_layer(0)
+    $DuckCaptureArea.set_collision_mask(0)
+    $DuckCaptureArea.set_collision_layer(0)
     scoring_timer = 5.0
     state = STATE.Scoring
 

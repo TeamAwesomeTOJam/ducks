@@ -2,104 +2,104 @@
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://FollowingDuck.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Art/Player/teamawesome_pinky_duck_right.png" type="Texture" id=3]
-[ext_resource path="res://Art/Player/teamawesome_purplegentledude_duck_right.png" type="Texture" id=4]
-[ext_resource path="res://Art/Player/teamawesome_pinky_duck_left.png" type="Texture" id=5]
-[ext_resource path="res://Art/Player/teamawesome_purplegentledude_duck_down.png" type="Texture" id=6]
-[ext_resource path="res://Art/Player/teamawesome_miketyson_duck_up.png" type="Texture" id=7]
-[ext_resource path="res://Art/Player/teamawesome_green_duck_left.png" type="Texture" id=8]
-[ext_resource path="res://Art/Player/teamawesome_green_duck_right.png" type="Texture" id=9]
-[ext_resource path="res://Art/Player/teamawesome_green_duck_down.png" type="Texture" id=10]
-[ext_resource path="res://Art/Player/teamawesome_green_duck_up.png" type="Texture" id=11]
-[ext_resource path="res://Art/Player/teamawesome_purplegentledude_duck_left.png" type="Texture" id=12]
-[ext_resource path="res://Art/Player/teamawesome_miketyson_duck_down.png" type="Texture" id=13]
-[ext_resource path="res://Art/Player/teamawesome_purplegentledude_duck_up.png" type="Texture" id=14]
-[ext_resource path="res://Art/Player/teamawesome_pinky_duck_up.png" type="Texture" id=15]
-[ext_resource path="res://Art/Player/teamawesome_pinky_duck_down.png" type="Texture" id=16]
-[ext_resource path="res://Art/Player/teamawesome_miketyson_duck_right.png" type="Texture" id=17]
-[ext_resource path="res://Art/Player/teamawesome_miketyson_duck_left.png" type="Texture" id=18]
+[ext_resource path="res://Art/Player/teamawesome_purplegentledude_duck_right.png" type="Texture" id=3]
+[ext_resource path="res://Art/Player/teamawesome_pinky_duck_left.png" type="Texture" id=4]
+[ext_resource path="res://Art/Player/teamawesome_purplegentledude_duck_down.png" type="Texture" id=5]
+[ext_resource path="res://Art/Player/teamawesome_miketyson_duck_up.png" type="Texture" id=6]
+[ext_resource path="res://Art/Player/teamawesome_green_duck_left.png" type="Texture" id=7]
+[ext_resource path="res://Art/Player/teamawesome_green_duck_right.png" type="Texture" id=8]
+[ext_resource path="res://Art/Player/teamawesome_green_duck_down.png" type="Texture" id=9]
+[ext_resource path="res://Art/Player/teamawesome_green_duck_up.png" type="Texture" id=10]
+[ext_resource path="res://Art/Player/teamawesome_purplegentledude_duck_left.png" type="Texture" id=11]
+[ext_resource path="res://Art/Player/teamawesome_miketyson_duck_down.png" type="Texture" id=12]
+[ext_resource path="res://Art/Player/teamawesome_purplegentledude_duck_up.png" type="Texture" id=13]
+[ext_resource path="res://Art/Player/teamawesome_pinky_duck_up.png" type="Texture" id=14]
+[ext_resource path="res://Art/Player/teamawesome_pinky_duck_down.png" type="Texture" id=15]
+[ext_resource path="res://Art/Player/teamawesome_miketyson_duck_right.png" type="Texture" id=16]
+[ext_resource path="res://Art/Player/teamawesome_miketyson_duck_left.png" type="Texture" id=17]
+[ext_resource path="res://Art/Player/teamawesome_pinky_duck_right.png" type="Texture" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "p2_right",
+"name": "p3_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "p3_right",
+"name": "p2_left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "p2_left",
+"name": "p3_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "p3_down",
+"name": "p1_up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "p1_up",
+"name": "p0_left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "p0_left",
+"name": "p0_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "p0_right",
+"name": "p0_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 10 ) ],
 "loop": true,
-"name": "p0_down",
+"name": "p0_up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
-"name": "p0_up",
+"name": "p3_left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
-"name": "p3_left",
+"name": "p1_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
-"name": "p1_down",
+"name": "p3_up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
-"name": "p3_up",
+"name": "p2_up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ) ],
 "loop": true,
-"name": "p2_up",
+"name": "p2_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 16 ) ],
 "loop": true,
-"name": "p2_down",
+"name": "p1_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
-"name": "p1_right",
+"name": "p1_left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 18 ) ],
 "loop": true,
-"name": "p1_left",
+"name": "p2_right",
 "speed": 5.0
 } ]
 
@@ -121,7 +121,7 @@ collision_mask = 1
 mode = 2
 mass = 1.0
 friction = 1.0
-bounce = 0.0
+bounce = 1.0
 gravity_scale = 1.0
 custom_integrator = false
 continuous_cd = 0
@@ -130,18 +130,19 @@ contact_monitor = false
 sleeping = false
 can_sleep = true
 linear_velocity = Vector2( 0, 0 )
-linear_damp = 4.0
+linear_damp = 0.5
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Linear", "Transform" ]
-SPEED = 20000
-MAX_SPEED = 500
+SPEED = 4000
+MAX_SPEED = 600
 PLAYER_NUMBER = 0
-BOOST_FACTOR = 2
+BOOST_FACTOR = 3.0
 Duck = ExtResource( 2 )
-BOOST_WAIT_TIME = 3
+BOOST_WAIT_TIME = 1.0
 BOOST_TIME = 0.2
+Splash = null
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 

@@ -41,35 +41,28 @@ func _ready():
     
     Developers:
     
-    
-    Daniel
-    
+    Daniel Lister
     
     
-    Cristian
+    Cristian Poll
     
     
-    
-    Aiden
+    Aiden Storey
     
     
     
     
     
     
-    Artist:
+    Art:
     
-    
-    
-    .
+    Sophia Feesh
         
     
     
     
     
     Audio:
-    
-    
     
     Jake Butineau
         
