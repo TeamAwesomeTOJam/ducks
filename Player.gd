@@ -41,6 +41,7 @@ var direction
 var speed 
 var is_post_game = false
 var my_score
+var first_time_enter_playing = true
 
 var ducks_to_add = 0
 
@@ -236,10 +237,13 @@ func enter_playing_state():
     if is_post_game || is_winner:
         state = STATE.PostGame
     
-    var splash = Splash.instance()
-    splash.position = Vector2()
-    splash.z_index = position.y + 1
-    self.add_child(splash)
+    if not first_time_enter_playing:
+        var splash = Splash.instance()
+        splash.position = Vector2()
+        splash.z_index = position.y + 1
+        self.add_child(splash)
+        $SplashSound.play()
+    first_time_enter_playing = false
 
 func respawn():
     self.linear_velocity = Vector2(0,0)
@@ -256,6 +260,7 @@ func entered_score_zone():
     self.set_collision_layer(0)
     $DuckCaptureArea.set_collision_mask(0)
     $DuckCaptureArea.set_collision_layer(0)
+    $FallSound.play()
     scoring_timer = 5.0
     state = STATE.Scoring
 
@@ -272,9 +277,14 @@ func _on_DuckCaptureArea_body_entered(body):
         if body.has_method('is_duck'):
             body.queue_free()
             ducks_to_add += 1
+            if not $CollectSound.playing:
+                $CollectSound.play()
         if body.has_method('is_follow_duck'):
             if body.player != self:
                 var count = body.count()
                 body.kill_me()
                 ducks_to_add += count
+                if not $StealSound.playing:
+                    $StealSound.play()
+                
     

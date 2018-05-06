@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_duckcollect.wav-52ae2d00face1bae5ac7de12d76f20af.sample"
+
+[deps]
+
+source_file="res://Audio/Sounds/sfx_duckcollect.wav"
+source_md5="371cc406ab749f287a7d187e2f650ccc"
+
+dest_files=[ "res://.import/sfx_duckcollect.wav-52ae2d00face1bae5ac7de12d76f20af.sample" ]
+dest_md5="d92d5044c56b91b797d93f2300ed05b1"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

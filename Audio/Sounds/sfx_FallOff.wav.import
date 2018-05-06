@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_FallOff.wav-1a8cff05df1f5fd1c50f3f04c3364ca8.sample"
+
+[deps]
+
+source_file="res://Audio/Sounds/sfx_FallOff.wav"
+source_md5="1ac21321d226c11d09bf0ee7e2d45020"
+
+dest_files=[ "res://.import/sfx_FallOff.wav-1a8cff05df1f5fd1c50f3f04c3364ca8.sample" ]
+dest_md5="d68748efd1438f1f293624b475f98f59"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
