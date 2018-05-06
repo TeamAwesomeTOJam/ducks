@@ -17,7 +17,7 @@ func update_time_pre_game(time_remaining):
     
 
 func pre_game(number_of_players, time_remaining):
-    for player in range(1, MAX_PLAYERS + 1):
+    for player in range(0, MAX_PLAYERS):
         update_player_score(player, 0)
         if player <= number_of_players:
             player_labels[player].show()
@@ -40,10 +40,10 @@ func end_game():
 
 func _ready():
     player_labels = {
-        1: $LabelPlayer1,
-        2: $LabelPlayer2,
-        3: $LabelPlayer3,
-        4: $LabelPlayer4,
+        0: $LabelPlayer1,
+        1: $LabelPlayer2,
+        2: $LabelPlayer3,
+        3: $LabelPlayer4,
     }
     
     for label in player_labels.values():

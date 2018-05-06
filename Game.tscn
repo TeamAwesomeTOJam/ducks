@@ -39,7 +39,7 @@ extents = Vector2( 1280, 100 )
 custom_solver_bias = 0.0
 extents = Vector2( 100, 720 )
 
-[node name="Game" type="Node" index="0"]
+[node name="Game" type="Node"]
 
 script = ExtResource( 1 )
 Player = ExtResource( 2 )
@@ -49,7 +49,7 @@ Duck = ExtResource( 3 )
 
 frames = SubResource( 1 )
 animation = "loop"
-frame = 4
+frame = 1
 playing = true
 offset = Vector2( 1280, 720 )
 _sections_unfolded = [ "Z Index" ]
@@ -260,5 +260,3 @@ texture = ExtResource( 14 )
 _sections_unfolded = [ "Z Index" ]
 
 [connection signal="body_entered" from="ScoringArea" to="." method="_on_ScoringArea_body_entered"]
-
-
