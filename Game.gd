@@ -8,7 +8,7 @@ var time_remaining = 0.0
 
 var MAX_PLAYERS = 4
 var MAX_TIME_PRE_GAME = 5.0
-var MAX_TIME_GAME = 10.0
+var MAX_TIME_GAME = 101.0
 
 enum STATE {
     idle,

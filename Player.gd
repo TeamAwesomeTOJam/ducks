@@ -8,7 +8,7 @@ export (PackedScene) var Duck
 export (float) var BOOST_WAIT_TIME = 3
 export (float) var BOOST_TIME = 0.2
 
-var tail_duck = null
+var tail_duck
 var state
 var wait = false
 
@@ -203,36 +203,5 @@ func entered_score_zone():
 
 func _on_DuckCaptureArea_body_entered(body):
     if body.has_method('is_duck'):
-        handle_duck_collision(body)
-#        body.set_collision_stuff(DEFAULT_COLLISION_MASK, DEFAULT_COLLISION_LAYER)
-
-func update_duck_for_current_player(duck):
-    duck.player = self
-    self.set_collision_mask(DEFAULT_COLLISION_MASK)
-    self.set_collision_layer(DEFAULT_COLLISION_LAYER)
-    
-    
-func split_at_node(node):
-    $LinkedList.split_at_node(node)
-    
-
-func handle_duck_collision(duck):
-    if duck.player == self:
-        return
-    
-    var to = self
-    if $LinkedList.tail:
-        to = $LinkedList.tail 
-    
-    if duck.player != null:
-        duck.player.split_at_node(duck)
-
-    $LinkedList.add_nodes_tail(duck)
-
-    var _node_iter = $LinkedList.head
-    while _node_iter:
-        update_duck_for_current_player(_node_iter)
-        _node_iter = _node_iter.next
-    
-    duck.join(to)
+        pass
     

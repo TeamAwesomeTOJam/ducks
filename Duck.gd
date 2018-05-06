@@ -1,10 +1,5 @@
 extends RigidBody2D
 
-var joint = null
-var player = null
-var prev = null
-var next = null
-
 
 var state
 var scoring_timer
@@ -31,17 +26,6 @@ func _ready():
 
 func is_duck():
     pass
-
-
-func join(to):
-    if self.joint:
-        self.joint.free()
-        
-    self.joint = PinJoint2D.new()
-    self.joint.set_name('joint')
-    self.joint.set_node_a(to.get_path())
-    self.joint.set_node_b(self.get_path())
-    self.add_child(self.joint)
     
 
 func _process(delta):
