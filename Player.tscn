@@ -146,7 +146,6 @@ Splash = null
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
-position = Vector2( 1.58887, -30.5855 )
 frames = SubResource( 1 )
 animation = "p0_up"
 

@@ -148,6 +148,7 @@ func playing(delta):
 
     if  boost_pressed and self.boost_wait_timer == 0:
         self.boosting = true
+        splash()
         self.boost_timer = BOOST_TIME
         self.boost_wait_timer = BOOST_WAIT_TIME
 
@@ -236,6 +237,9 @@ func enter_playing_state():
     if is_post_game || is_winner:
         state = STATE.PostGame
     
+    splash()
+    
+func splash():
     var splash = Splash.instance()
     splash.position = Vector2()
     splash.z_index = position.y + 1
