@@ -201,17 +201,38 @@ func winner():
     respawn()
 
 
+#func spawning(delta):
+#    if wait:  # Terrible hack because we need to wait a frame (too many game loops)
+#        wait = false
+#        return
+#
+#    var my_x = self.position.x
+#    var my_y = self.position.y
+#    print(str(my_x) + " " + str(my_y) + " " + str(position.x) + " " + str(position.y))
+#
+#    if my_x < spawn_destination.x - 300:
+#        var vector = Vector2(1, 0.2).normalized()
+#        self.set_linear_velocity(vector * 900)
+#    elif my_y < spawn_destination.y + 100 or my_x < spawn_destination.x + 100:
+#        var vector = (spawn_destination - to_global(self.position)).normalized()
+#        self.set_linear_velocity(vector * 1200)
+#    else:
+#        self.linear_velocity = Vector2(0,0)
+#        enter_playing_state()
+#
+#    sent = false
+    
 func spawning(delta):
     if wait:  # Terrible hack because we need to wait a frame (too many game loops)
         wait = false
         return
     
-    if self.position.x < spawn_destination.x - 300:
-        var vector = Vector2(1, 0.2).normalized()
-        self.set_linear_velocity(vector * 900)
-    elif self.position.y < spawn_destination.y or self.position.x < spawn_destination.x:
+    if self.position.x < spawn_destination.x:
+        var vector = Vector2(1, 0.05).normalized()
+        self.apply_impulse(Vector2(), vector * 1000 * delta)
+    elif self.position.y < spawn_destination.y:
         var vector = (spawn_destination - self.position).normalized()
-        self.set_linear_velocity(vector * 1200)
+        self.apply_impulse(Vector2(), vector * 1000 * delta)
     else:
         self.linear_velocity = Vector2(0,0)
         enter_playing_state()
@@ -257,7 +278,7 @@ func respawn():
     if is_winner: 
         spawn_destination = Vector2(862.564941, 587.203247)
     else:
-        spawn_destination = Vector2(rand_range(740, 1280), rand_range(320, 1100))
+        spawn_destination = Vector2(rand_range(500, 750), rand_range(500, 1100))
     z_index = spawn_destination.y
 
 func entered_score_zone():
@@ -266,7 +287,7 @@ func entered_score_zone():
     $DuckCaptureArea.set_collision_mask(0)
     $DuckCaptureArea.set_collision_layer(0)
     $FallSound.play()
-    scoring_timer = 5.0
+    scoring_timer = 3.0
     state = STATE.Scoring
 
 func add_score():
