@@ -37,7 +37,7 @@ extents = Vector2( 1280, 100 )
 custom_solver_bias = 0.0
 extents = Vector2( 100, 720 )
 
-[node name="Game" type="Node" index="0"]
+[node name="Game" type="Node"]
 
 script = ExtResource( 1 )
 Player = ExtResource( 2 )
@@ -47,7 +47,7 @@ Duck = ExtResource( 3 )
 
 frames = SubResource( 1 )
 animation = "loop"
-frame = 3
+frame = 5
 playing = true
 offset = Vector2( 1280, 720 )
 _sections_unfolded = [ "Z Index" ]
@@ -62,9 +62,19 @@ _sections_unfolded = [ "Collision", "Linear", "Transform", "Z Index" ]
 position = Vector2( 518.883, 859.082 )
 PLAYER_NUMBER = 1
 
-[node name="HUD" parent="." index="3" instance=ExtResource( 10 )]
+[node name="Player2" parent="." index="3" instance=ExtResource( 2 )]
 
-[node name="ScoringArea" type="Area2D" parent="." index="4"]
+position = Vector2( 1059.79, 863.864 )
+PLAYER_NUMBER = 2
+
+[node name="Player3" parent="." index="4" instance=ExtResource( 2 )]
+
+position = Vector2( 1270.39, 383.995 )
+PLAYER_NUMBER = 3
+
+[node name="HUD" parent="." index="5" instance=ExtResource( 10 )]
+
+[node name="ScoringArea" type="Area2D" parent="." index="6"]
 
 editor/display_folded = true
 position = Vector2( 2560, 720 )
@@ -84,12 +94,12 @@ rotation = 0.610865
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="RespawnArea" type="Node2D" parent="." index="5"]
+[node name="RespawnArea" type="Node2D" parent="." index="7"]
 
 position = Vector2( 100, 100 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="8"]
 
 stream = ExtResource( 11 )
 volume_db = 0.0
@@ -98,9 +108,8 @@ mix_target = 0
 bus = "Master"
 _sections_unfolded = [ "Pause" ]
 
-[node name="Borders" type="StaticBody2D" parent="." index="7"]
+[node name="Borders" type="StaticBody2D" parent="." index="9"]
 
-editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -128,7 +137,7 @@ rotation = 0.570963
 shape = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Rocks" type="Node" parent="." index="8"]
+[node name="Rocks" type="Node" parent="." index="10"]
 
 editor/display_folded = true
 

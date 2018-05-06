@@ -10,7 +10,8 @@ var state
 var scoring_timer
 var spawn_destination
 
-var SPEED
+var direction
+var speed
 
 var DEFAULT_COLLISION_MASK = 15
 var DEFAULT_COLLISION_LAYER = 15
@@ -23,7 +24,8 @@ enum STATE {
 }
 
 func _ready():
-    SPEED = 250
+    direction = Vector2(1, rand_range(-0.2, 0.2)).normalized()
+    speed = rand_range(450, 750)
     respawn()
 
 
@@ -67,21 +69,8 @@ func _integrate_forces(f_state):
 ###
 
 func playing(delta):
-    var impulse_vector = Vector2(1, 0).normalized()
-
-    var max_speed = 250
-    if impulse_vector.length() > 0:
-        impulse_vector = impulse_vector.normalized() * SPEED
-
-    #else:
-    #    impulse_vector = - linear_velocity.normalized() * SPEED
-
+    var impulse_vector = direction * speed
     apply_impulse(Vector2(), impulse_vector * delta)
-
-    if get_linear_velocity().length() > max_speed + 10:
-        var new_speed = get_linear_velocity().normalized()
-        new_speed *= max_speed
-        set_linear_velocity(new_speed)
 
 func spawning(delta):
     if self.position.x < spawn_destination.x - 300:
@@ -98,7 +87,7 @@ func spawning(delta):
 func scoring(delta):
     scoring_timer -= delta
 
-    apply_impulse(Vector2(), Vector2(0, 1).normalized() * 4500 * delta)
+    apply_impulse(Vector2(), Vector2(0.55, 1).normalized() * 5000 * delta)
 
     if scoring_timer < 0:
         self.queue_free()

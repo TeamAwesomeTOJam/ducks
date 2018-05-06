@@ -1,32 +1,109 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Duck.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Art/Player/teamawesome_default_duck_down.png" type="Texture" id=3]
-[ext_resource path="res://Art/Player/teamawesome_default_duck_up.png" type="Texture" id=4]
-[ext_resource path="res://Art/Player/teamawesome_default_duck_left.png" type="Texture" id=5]
-[ext_resource path="res://Art/Player/teamawesome_default_duck_right.png" type="Texture" id=6]
-[ext_resource path="res://LinkedList.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Art/Player/teamawesome_green_duck_right.png" type="Texture" id=3]
+[ext_resource path="res://Art/Player/teamawesome_purplegentledude_duck_right.png" type="Texture" id=4]
+[ext_resource path="res://Art/Player/teamawesome_purplegentledude_duck_up.png" type="Texture" id=5]
+[ext_resource path="res://Art/Player/teamawesome_pinky_duck_down.png" type="Texture" id=6]
+[ext_resource path="res://Art/Player/teamawesome_miketyson_duck_down.png" type="Texture" id=7]
+[ext_resource path="res://Art/Player/teamawesome_miketyson_duck_up.png" type="Texture" id=8]
+[ext_resource path="res://Art/Player/teamawesome_pinky_duck_left.png" type="Texture" id=9]
+[ext_resource path="res://Art/Player/teamawesome_pinky_duck_right.png" type="Texture" id=10]
+[ext_resource path="res://Art/Player/teamawesome_green_duck_down.png" type="Texture" id=11]
+[ext_resource path="res://Art/Player/teamawesome_purplegentledude_duck_left.png" type="Texture" id=12]
+[ext_resource path="res://Art/Player/teamawesome_pinky_duck_up.png" type="Texture" id=13]
+[ext_resource path="res://Art/Player/teamawesome_green_duck_left.png" type="Texture" id=14]
+[ext_resource path="res://Art/Player/teamawesome_purplegentledude_duck_down.png" type="Texture" id=15]
+[ext_resource path="res://Art/Player/teamawesome_miketyson_duck_left.png" type="Texture" id=16]
+[ext_resource path="res://Art/Player/teamawesome_green_duck_up.png" type="Texture" id=17]
+[ext_resource path="res://Art/Player/teamawesome_miketyson_duck_right.png" type="Texture" id=18]
+[ext_resource path="res://LinkedList.tscn" type="PackedScene" id=19]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "p0_down",
+"name": "p3_right",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "New Anim",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "p0_up",
+"name": "p1_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "p0_left",
+"name": "p1_up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "p2_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "p0_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "p0_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "p2_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "p2_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "p3_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "p1_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "p2_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "p3_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "p1_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "p0_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "p3_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
 "loop": true,
 "name": "p0_right",
 "speed": 5.0
@@ -42,7 +119,7 @@ radius = 22.942
 custom_solver_bias = 0.0
 radius = 34.2845
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -76,6 +153,7 @@ BOOST_TIME = 0.2
 
 frames = SubResource( 1 )
 animation = "p0_up"
+offset = Vector2( 0, -20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
@@ -96,7 +174,7 @@ audio_bus_name = "Master"
 
 shape = SubResource( 3 )
 
-[node name="LinkedList" parent="." index="3" instance=ExtResource( 7 )]
+[node name="LinkedList" parent="." index="3" instance=ExtResource( 19 )]
 
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
 

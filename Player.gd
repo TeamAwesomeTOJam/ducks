@@ -34,6 +34,7 @@ func _ready():
     screensize = get_viewport_rect().size
     DEFAULT_COLLISION_LAYER = 1 << PLAYER_NUMBER
     DEFAULT_COLLISION_MASK = 15 ^ DEFAULT_COLLISION_LAYER
+    $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_right"
 
     enter_playing_state()
 
