@@ -86,6 +86,7 @@ _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Theme", "c
 position = Vector2( 1870.98, 2773.31 )
 frames = SubResource( 2 )
 animation = "default"
+frame = 1
 playing = true
 
 [node name="Theme" type="AnimatedSprite" parent="ScrollingCredits" index="2"]

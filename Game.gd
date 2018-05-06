@@ -129,9 +129,10 @@ func _process(delta):
     update_time(delta)
     update_hud()
     
-    # TODO: REMOVE THIS AT SOME POINT, OR DON'T I'M NOT THE BOSS OF YOU.
-    if state == STATE.idle && Input.is_action_pressed('ui_up'):
-        pre_game()
+    if state == STATE.idle:
+        for i in range(0, 3):
+            if Input.is_joy_button_pressed(i, JOY_START):
+                pre_game()
         
     if Input.is_action_just_pressed('p0duck'):
         spawn_duck()
