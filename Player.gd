@@ -181,7 +181,7 @@ func playing(delta):
 func scoring(delta):
     scoring_timer -= delta
 
-    set_linear_velocity(Vector2(0.45, 1).normalized() * 70000 * delta)
+    set_linear_velocity(Vector2(0.45, 1).normalized() * 1000)
 
     if scoring_timer < 0:
         add_score()
@@ -193,12 +193,12 @@ func spawning(delta):
         wait = false
         return
     
-    if self.position.x < spawn_destination.x - 300:
+    if self.position.x < spawn_destination.x - 200:
         var vector = Vector2(1, 0.05).normalized()
-        self.apply_impulse(Vector2(), vector * 4500 * delta)
+        self.set_linear_velocity(vector * 900)
     elif self.position.y < spawn_destination.y:
         var vector = (spawn_destination - self.position).normalized()
-        self.apply_impulse(Vector2(), vector * 2500 * delta)
+        self.set_linear_velocity(vector * 1200)
     else:
         self.linear_velocity = Vector2(0,0)
         enter_playing_state()
