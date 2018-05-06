@@ -82,6 +82,27 @@ func _ready():
     
     
     
+    Created for TOJam 13
+    Flirteen With Danger
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

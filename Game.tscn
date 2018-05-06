@@ -323,5 +323,3 @@ _sections_unfolded = [ "custom_colors", "custom_fonts" ]
 [connection signal="body_entered" from="ScoringArea" to="." method="_on_ScoringArea_body_entered"]
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
-
-
