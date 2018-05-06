@@ -35,8 +35,10 @@ var DEFAULT_COLLISION_LAYER
 var direction
 var speed 
 var is_post_game = false
+var my_score
 
 func _ready():
+    my_score = 0
     direction = Vector2(1, rand_range(-0.2, 0.2)).normalized()
     speed = rand_range(450, 750)
     screensize = get_viewport_rect().size
@@ -172,6 +174,7 @@ func scoring(delta):
     set_linear_velocity(Vector2(0.45, 1).normalized() * 70000 * delta)
 
     if scoring_timer < 0:
+        add_score()
         respawn()
 
 
@@ -222,6 +225,12 @@ func entered_score_zone():
     scoring_timer = 5.0
     state = STATE.Scoring
 
+func add_score():
+    if child:
+        my_score += child.count()
+        child.kill_me()
+        
+        get_parent().get_node("HUD").update_player_score(PLAYER_NUMBER, my_score)
 
 func _on_DuckCaptureArea_body_entered(body):
     if not collecting:
