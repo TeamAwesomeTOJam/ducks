@@ -11,7 +11,7 @@ var spawn_timer
 
 var MAX_PLAYERS = 4
 var MAX_TIME_PRE_GAME = 3.0
-var MAX_TIME_GAME = 63.0
+var MAX_TIME_GAME = 60.0
 
 
 enum STATE {
