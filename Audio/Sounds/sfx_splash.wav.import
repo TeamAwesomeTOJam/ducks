@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_splash.wav-8cd9d2ea3d81505721858200c8e1fcff.sample"
+
+[deps]
+
+source_file="res://Audio/Sounds/sfx_splash.wav"
+source_md5="e8b8759ffef2aab3f3b04a0995b61aab"
+
+dest_files=[ "res://.import/sfx_splash.wav-8cd9d2ea3d81505721858200c8e1fcff.sample" ]
+dest_md5="7a13958f47cc47675942a6eedaa855f5"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

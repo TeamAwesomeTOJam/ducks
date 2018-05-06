@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_stealQuack.wav-9b84e4072284121f1e5641be42e0a801.sample"
+
+[deps]
+
+source_file="res://Audio/Sounds/sfx_stealQuack.wav"
+source_md5="5a4fd85e4463b4239f771106c7fcac91"
+
+dest_files=[ "res://.import/sfx_stealQuack.wav-9b84e4072284121f1e5641be42e0a801.sample" ]
+dest_md5="77a082f7ffae13367d3882a4ac36ea29"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
