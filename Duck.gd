@@ -12,6 +12,7 @@ var override_velocity
 var DEFAULT_COLLISION_MASK = 15
 var DEFAULT_COLLISION_LAYER = 15
 var child
+var is_post_game = false
 
 enum STATE {
     Playing,
@@ -43,8 +44,9 @@ func _process(delta):
 
 
 func _game_ended():
-    state = STATE.PostGame
-
+    if state == STATE.Playing:
+        state = STATE.PostGame
+    is_post_game = true
 
 
 func _integrate_forces(f_state):
@@ -124,7 +126,7 @@ func respawn():
 func enter_playing_state():
     self.set_collision_mask(DEFAULT_COLLISION_MASK)
     self.set_collision_layer(DEFAULT_COLLISION_LAYER)
-    state = STATE.Playing
+    state = STATE.Playing if !is_post_game else STATE.PostGame
 
 func set_collision_stuff(mask, layer):
     self.set_collision_mask(mask)
