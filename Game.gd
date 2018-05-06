@@ -38,7 +38,7 @@ func end_game():
     $HUD.end_game()
     update_state(STATE.post_game)
     
-    emit_signal('game_ended')
+#    emit_signal('game_ended')
 
 
 func update_hud():
@@ -93,9 +93,6 @@ func _process(delta):
     # TODO: REMOVE THIS AT SOME POINT, OR DON'T I'M NOT THE BOSS OF YOU.
     if state == STATE.idle && Input.is_action_pressed('ui_up'):
         pre_game()
-        
-    if Input.is_action_just_pressed('ui_up'):
-        emit_signal('game_ended')
         
     if Input.is_action_just_pressed('p0duck'):
         spawn_duck()
