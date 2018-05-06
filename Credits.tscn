@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Credits.gd" type="Script" id=1]
-[ext_resource path="res://frankfrt.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Duck.tscn" type="PackedScene" id=2]
+[ext_resource path="res://frankfrt.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 60
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=2]
@@ -16,7 +17,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 120
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Credits" type="CanvasLayer" index="0"]
@@ -27,6 +28,7 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 1 )
+Duck = ExtResource( 2 )
 
 [node name="ScrollingCredits" type="CanvasLayer" parent="." index="0"]
 
@@ -52,10 +54,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.188305, 0.719889, 0.824219, 1 )
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Theme", "custom_fonts" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Theme", "custom_colors", "custom_fonts" ]
 
 [node name="Button" type="Button" parent="." index="1"]
 
