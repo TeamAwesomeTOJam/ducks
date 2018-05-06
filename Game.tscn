@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -48,7 +48,7 @@ use_filter = false
 font_data = ExtResource( 15 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
 Player = ExtResource( 2 )
@@ -58,7 +58,7 @@ Duck = ExtResource( 3 )
 
 frames = SubResource( 1 )
 animation = "loop"
-frame = 1
+frame = 4
 playing = true
 offset = Vector2( 1280, 720 )
 _sections_unfolded = [ "Z Index" ]
@@ -315,30 +315,6 @@ size_flags_vertical = 4
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.311862, 0.238764, 0.664062, 1 )
 text = "Credits"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
-
-[node name="Label" type="Label" parent="." index="13"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 2252.0
-margin_top = 1367.0
-margin_right = 2545.0
-margin_bottom = 1424.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0.382812, 1, 0, 1 )
-text = "A: Boost"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
