@@ -1,5 +1,7 @@
 extends Node
 
+signal game_ended
+
 export (PackedScene) var Player
 export (PackedScene) var Duck
 
@@ -14,6 +16,7 @@ enum STATE {
     idle,
     pre_game,
     game,
+    post_game,
 }
 
 var state = null
@@ -32,7 +35,9 @@ func start_game():
 
 func end_game():
     $HUD.end_game()
-    update_state(STATE.idle)
+    update_state(STATE.post_game)
+    
+    emit_signal('game_ended')
 
 
 func update_hud():
@@ -72,6 +77,8 @@ func spawn_duck():
     self.add_child(duck)
     duck.set_owner(self)
     
+    self.connect('game_ended', duck, '_game_ended')
+    
 
 func _ready():
     update_state(STATE.idle)
@@ -84,6 +91,9 @@ func _process(delta):
     # TODO: REMOVE THIS AT SOME POINT, OR DON'T I'M NOT THE BOSS OF YOU.
     if state == STATE.idle && Input.is_action_pressed('ui_up'):
         pre_game()
+        
+    if Input.is_action_just_pressed('ui_up'):
+        emit_signal('game_ended')
         
     if Input.is_action_just_pressed('p0duck'):
         spawn_duck()

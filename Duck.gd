@@ -15,7 +15,8 @@ enum STATE {
     Playing,
     Scoring,
     MoveToRespawn,
-    Spawning
+    Spawning,
+    PostGame,
 }
 
 func _ready():
@@ -36,6 +37,12 @@ func _process(delta):
         spawning(delta)
     elif state == STATE.Scoring:
         scoring(delta)
+    elif state == STATE.PostGame:
+        post_game(delta)
+        
+        
+func _game_ended():
+    state = STATE.PostGame
         
 
 
@@ -77,6 +84,10 @@ func scoring(delta):
 
     if scoring_timer < 0:
         self.queue_free()
+        
+func post_game(delta):
+    var impulse_vector = direction * speed * 10.0
+    apply_impulse(Vector2(), impulse_vector * delta)
 
 ###
 # State Transitions
