@@ -113,7 +113,7 @@ radius = 22.942
 custom_solver_bias = 0.0
 radius = 34.2845
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -121,7 +121,7 @@ collision_mask = 1
 mode = 2
 mass = 1.0
 friction = 1.0
-bounce = 0.0
+bounce = 1.0
 gravity_scale = 1.0
 custom_integrator = false
 continuous_cd = 0
@@ -130,17 +130,17 @@ contact_monitor = false
 sleeping = false
 can_sleep = true
 linear_velocity = Vector2( 0, 0 )
-linear_damp = 4.0
+linear_damp = 0.5
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Linear", "Transform" ]
-SPEED = 20000
-MAX_SPEED = 500
+SPEED = 4000
+MAX_SPEED = 600
 PLAYER_NUMBER = 0
-BOOST_FACTOR = 2
+BOOST_FACTOR = 3.0
 Duck = ExtResource( 2 )
-BOOST_WAIT_TIME = 3
+BOOST_WAIT_TIME = 1.0
 BOOST_TIME = 0.2
 Splash = null
 
