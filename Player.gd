@@ -130,7 +130,9 @@ func playing(delta):
     if self.boost_timer == 0:
         boosting = false
 
-    if Input.is_action_just_pressed(get_action('boost')) and self.boost_wait_timer == 0:
+    var boost_pressed = Input.is_joy_button_pressed(PLAYER_NUMBER, JOY_XBOX_A) or Input.is_action_just_pressed(get_action('boost'))
+
+    if  boost_pressed and self.boost_wait_timer == 0:
         self.boosting = true
         self.boost_timer = BOOST_TIME
         self.boost_wait_timer = BOOST_WAIT_TIME
