@@ -135,8 +135,8 @@ func _process(delta):
             if Input.is_joy_button_pressed(i, JOY_START):
                 pre_game()
         
-    if Input.is_action_just_pressed('p0duck'):
-        spawn_duck()
+#    if Input.is_action_just_pressed('p0duck'):
+#        spawn_duck()
         
     if state == STATE.game:
         game(delta)

@@ -56,7 +56,7 @@ use_filter = false
 font_data = ExtResource( 15 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
 Player = ExtResource( 2 )
@@ -66,7 +66,7 @@ Duck = ExtResource( 3 )
 
 frames = SubResource( 1 )
 animation = "loop"
-frame = 2
+frame = 5
 playing = true
 offset = Vector2( 1280, 720 )
 _sections_unfolded = [ "Z Index" ]
@@ -75,32 +75,28 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( 782.234, 364.195 )
 _sections_unfolded = [ "Collision", "Linear", "Transform", "Z Index" ]
-BOOST_FACTOR = 8.0
-BOOST_WAIT_TIME = 2.0
+BOOST_FACTOR = 6.0
 Splash = ExtResource( 10 )
 
 [node name="Player1" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 518.883, 859.082 )
 PLAYER_NUMBER = 1
-BOOST_FACTOR = 8.0
-BOOST_WAIT_TIME = 2.0
+BOOST_FACTOR = 6.0
 Splash = ExtResource( 10 )
 
 [node name="Player2" parent="." index="3" instance=ExtResource( 2 )]
 
 position = Vector2( 1059.79, 863.864 )
 PLAYER_NUMBER = 2
-BOOST_FACTOR = 8.0
-BOOST_WAIT_TIME = 2.0
+BOOST_FACTOR = 6.0
 Splash = ExtResource( 10 )
 
 [node name="Player3" parent="." index="4" instance=ExtResource( 2 )]
 
 position = Vector2( 1270.39, 383.995 )
 PLAYER_NUMBER = 3
-BOOST_FACTOR = 8.0
-BOOST_WAIT_TIME = 2.0
+BOOST_FACTOR = 6.0
 Splash = ExtResource( 10 )
 
 [node name="HUD" parent="." index="5" instance=ExtResource( 11 )]
@@ -134,7 +130,7 @@ _sections_unfolded = [ "Transform" ]
 
 stream = ExtResource( 12 )
 volume_db = 0.0
-autoplay = false
+autoplay = true
 mix_target = 0
 bus = "Master"
 _sections_unfolded = [ "Pause" ]

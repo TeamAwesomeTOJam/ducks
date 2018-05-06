@@ -91,6 +91,7 @@ func _integrate_forces(f_state):
         xform.origin.y = rand_range(150,180)
         f_state.set_transform(xform)
         set_applied_force(Vector2(0,0))
+        linear_velocity = Vector2(0,0)
 
         state = STATE.Spawning
 
@@ -223,8 +224,8 @@ func winner():
 #    sent = false
     
 func spawning(delta):
-    if wait:  # Terrible hack because we need to wait a frame (too many game loops)
-        wait = false
+    if wait < 3:  # Terrible hack because we need to wait a frame (too many game loops)
+        wait += 1
         return
     
     if self.position.x < spawn_destination.x:
@@ -274,11 +275,11 @@ func splash():
 func respawn():
     self.linear_velocity = Vector2(0,0)
     state = STATE.MoveToRespawn
-    wait = true
+    wait = 0
     if is_winner: 
         spawn_destination = Vector2(500.564941, 587.203247)
     else:
-        spawn_destination = Vector2(rand_range(500, 750), rand_range(500, 1100))
+        spawn_destination = Vector2(rand_range(500, 750), rand_range(500, 700))
         
     $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_right"
     z_index = spawn_destination.y
