@@ -168,13 +168,13 @@ func playing(delta):
         set_linear_velocity(new_speed)
         
     # Animation
-    if impulse_vector.x > 0 and impulse_vector.x > impulse_vector.y:
+    if impulse_vector.x > 0 and abs(impulse_vector.x) > abs(impulse_vector.y):
         $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_right"
-    elif impulse_vector.x < 0 and impulse_vector.x < impulse_vector.y:
+    elif impulse_vector.x < 0 and abs(impulse_vector.x) > abs(impulse_vector.y):
         $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_left"
-    elif impulse_vector.y > 0 and impulse_vector.y > impulse_vector.x:
+    elif impulse_vector.y > 0 and abs(impulse_vector.y) > abs(impulse_vector.x):
         $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_down"
-    elif impulse_vector.y < 0 and impulse_vector.y < impulse_vector.x:
+    elif impulse_vector.y < 0 and abs(impulse_vector.y) > abs(impulse_vector.x):
         $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_up"
 
 
