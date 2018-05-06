@@ -3,6 +3,7 @@ extends CanvasLayer
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
+export (PackedScene) var Duck
 var timer
 var line
 
@@ -13,11 +14,23 @@ func _process(delta):
             return_to_game() 
     
     timer += delta
+    if timer > 1:
+        timer-=1
+        spawn_duck()
     
     $ScrollingCredits.offset.y += delta * -300
 
 func return_to_game():
     get_tree().change_scene("res://Game.tscn")
+
+func spawn_duck():
+    var duck = Duck.instance()
+    duck.set_name('duck')
+    
+    duck.position = Vector2(-500, -500)
+    
+    self.add_child(duck)
+    duck.set_owner(self)
 
 func _ready():
     timer = 0
