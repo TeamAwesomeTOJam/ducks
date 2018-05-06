@@ -113,7 +113,7 @@ radius = 22.942
 custom_solver_bias = 0.0
 radius = 34.2845
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -146,6 +146,7 @@ Splash = null
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
+position = Vector2( 1.58887, -30.5855 )
 frames = SubResource( 1 )
 animation = "p0_up"
 

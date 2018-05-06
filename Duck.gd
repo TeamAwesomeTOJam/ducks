@@ -45,7 +45,7 @@ func is_duck():
 func _process(delta):
     if state == STATE.Playing:
         playing(delta)
-        z_index = position.y
+        z_index = position.y + 7
     elif state == STATE.Spawning:
         spawning(delta)
     elif state == STATE.Scoring:
