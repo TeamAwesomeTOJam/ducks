@@ -92,11 +92,6 @@ func _process(delta):
     update_time(delta)
     update_hud()
     
-    for i in range(0, 3):
-        var credits_pressed = Input.is_joy_button_pressed(i, JOY_START) and Input.is_joy_button_pressed(i, JOY_SELECT)
-        if credits_pressed:
-            go_to_credits() 
-    
     # TODO: REMOVE THIS AT SOME POINT, OR DON'T I'M NOT THE BOSS OF YOU.
     if state == STATE.idle && Input.is_action_pressed('ui_up'):
         pre_game()
@@ -124,3 +119,7 @@ func game(delta):
 func _on_ScoringArea_body_entered(body):
     if(body.has_method('entered_score_zone')):
         body.entered_score_zone()
+
+
+func _on_Button_pressed():
+    go_to_credits()
