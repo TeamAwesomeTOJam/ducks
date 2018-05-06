@@ -8,7 +8,9 @@ export (PackedScene) var Duck
 export (float) var BOOST_WAIT_TIME = 3
 export (float) var BOOST_TIME = 0.2
 
-var tail_duck
+var collecting
+
+var child_duck
 var state
 var wait = false
 
@@ -42,6 +44,7 @@ func get_action(action):
     return "p" + str(PLAYER_NUMBER) + action
 
 func _process(delta):
+    collecting = false
     if state == STATE.Playing:
         playing(delta)
     elif state == STATE.Scoring:
@@ -67,8 +70,8 @@ func add_duck(duck):
     var behind = - self.linear_velocity
     if behind.length() == 0:
         behind = Vector2(0,-1)
-    if not tail_duck:
-        tail_duck = duck
+    if not child_duck:
+        child_duck = duck
         var spring = PinJoint2D.new()
         spring.set_name('spring')
         duck.set_name('duck')
@@ -78,13 +81,13 @@ func add_duck(duck):
         self.add_child(spring)
         spring.set_node_a('..')
         spring.set_node_b('../duck')
+        child_duck = duck
         #spring.set_length(50)
         #spring.set_stiffness(40)
         #spring.set_damping(1)
         #spring.set_rest_length(0)
     else:
-        tail_duck.add_duck(duck, behind)
-        tail_duck = duck
+        child_duck.add_duck(duck, behind)
 
 ###
 # STATE METHODS
@@ -207,7 +210,9 @@ func entered_score_zone():
 
 
 func _on_DuckCaptureArea_body_entered(body):
-    if body.has_method('is_duck'):
-        body.queue_free()
-        add_duck(Duck.instance())
+    if not collecting:
+        collecting = true
+        if body.has_method('is_duck'):
+            body.queue_free()
+            add_duck(Duck.instance())
     

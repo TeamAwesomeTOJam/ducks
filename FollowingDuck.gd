@@ -4,6 +4,7 @@ extends RigidBody2D
 # var a = 2
 # var b = "textvar"
 var child = null
+var parent = null
 
 func count():
     if child:
@@ -22,19 +23,20 @@ func _ready():
     pass
 
 func add_duck(duck, behind):
-    if child:
-        print("can't add duck already have child")
-        return
-    child = duck
     var new_behind = - self.linear_velocity
     if new_behind.length() == 0:
         new_behind = behind
-    var spring = PinJoint2D.new()
-    spring.set_name('joint')
-    duck.set_name('duck')
-    duck.position = new_behind.normalized() * 30
-    self.add_child(duck)
-    duck.set_owner(self)
-    self.add_child(spring)
-    spring.set_node_a('..')
-    spring.set_node_b('../duck')
+    if child:
+        child.add_duck(duck, new_behind)
+    else:
+        child = duck
+        var spring = PinJoint2D.new()
+        spring.set_name('joint')
+        duck.set_name('duck')
+        duck.position = new_behind.normalized() * 30
+        self.add_child(duck)
+        duck.set_owner(self)
+        self.add_child(spring)
+        spring.set_node_a('..')
+        spring.set_node_b('../duck')
+        duck.parent = self
