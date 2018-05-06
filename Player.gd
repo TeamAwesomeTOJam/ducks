@@ -175,19 +175,6 @@ func scoring(delta):
         respawn()
 
 
-#func spawning(delta):
-#    spawning_timer -= delta
-#
-#    if spawning_timer > 1.5:
-#        apply_impulse(Vector2(), Vector2(0.7, 1).normalized() * 3500 * delta)
-#    elif spawning_timer > 0.3:
-#        apply_impulse(Vector2(), Vector2(0.2, 1).normalized() * 3500 * delta)
-#    elif spawning_timer > 0:
-#        apply_impulse(Vector2(), Vector2(-0.2, -1).normalized() * 500 * delta)
-#    else:
-#        self.linear_velocity = Vector2(0,0)
-#        enter_playing_state()
-
 func spawning(delta):
     if wait:  # Terrible hack because we need to wait a frame (too many game loops)
         wait = false
