@@ -47,7 +47,7 @@ var ducks_to_add = 0
 func _ready():
     my_score = 0
     direction = Vector2(1, 0).normalized()
-    speed = rand_range(450, 750)
+    speed = 450
     screensize = get_viewport_rect().size
     DEFAULT_COLLISION_LAYER = 1 << PLAYER_NUMBER
     DEFAULT_COLLISION_MASK = 15 ^ DEFAULT_COLLISION_LAYER
@@ -217,7 +217,7 @@ func spawning(delta):
     sent = false
         
 func post_game(delta):
-    var impulse_vector = direction * speed * (10.0 if !is_winner else 1.0)
+    var impulse_vector = direction * speed * (1.0 if !is_winner else 0.2)
     apply_impulse(Vector2(), impulse_vector * delta)
 
 ###

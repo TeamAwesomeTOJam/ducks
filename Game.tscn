@@ -58,7 +58,7 @@ Duck = ExtResource( 3 )
 
 frames = SubResource( 1 )
 animation = "loop"
-frame = 5
+frame = 1
 playing = true
 offset = Vector2( 1280, 720 )
 _sections_unfolded = [ "Z Index" ]
@@ -322,3 +322,5 @@ _sections_unfolded = [ "custom_colors", "custom_fonts" ]
 [connection signal="body_entered" from="ScoringArea" to="." method="_on_ScoringArea_body_entered"]
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+

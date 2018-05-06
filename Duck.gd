@@ -13,6 +13,7 @@ var DEFAULT_COLLISION_MASK = 15
 var DEFAULT_COLLISION_LAYER = 0
 var child
 var is_post_game = false
+var winning = false
 
 enum STATE {
     Playing,
@@ -21,11 +22,21 @@ enum STATE {
     Spawning,
     PostGame,
 }
+var is_winner = false
 
 func _ready():
     direction = Vector2(1, rand_range(-0.2, 0.2)).normalized()
     speed = rand_range(450, 750)
+    if is_winner:
+        winner()
+    else:
+        respawn()
+    
+func winner():
+    direction = Vector2(1, 0).normalized()
+    speed = 750
     respawn()
+    
 
 func is_duck():
     pass
@@ -121,7 +132,10 @@ func respawn():
     self.set_collision_layer(0)
     self.linear_velocity = Vector2(0,0)
     state = STATE.MoveToRespawn
-    spawn_destination = Vector2(rand_range(740, 1280), rand_range(320, 1100))
+    if is_winner:
+        spawn_destination = Vector2(862.564941, 587.203247)
+    else:
+        spawn_destination = Vector2(rand_range(740, 1280), rand_range(320, 1100))
     z_index = spawn_destination.y
 
 func enter_playing_state():

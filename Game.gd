@@ -19,6 +19,7 @@ enum STATE {
     pre_game,
     game,
     post_game,
+    PostPostGame,
 }
 
 var state = null
@@ -48,7 +49,7 @@ var players = {}
 var last_player_done = false
 func player_ended(player_number):
     if last_player_done && player_number == top_player.PLAYER_NUMBER:
-        print('ended')
+        get_tree().change_scene("res://Game.tscn")
     else:
         var player = players[player_number]
         players.erase(player_number)
@@ -60,6 +61,7 @@ func player_ended(player_number):
         if !players:
             top_player.winner()
             last_player_done = true
+            time_remaining = 1.0
 
 
 func update_hud():
@@ -90,6 +92,8 @@ func update_time(delta):
                 start_game()
             elif state == STATE.game:
                 end_game()
+            elif state == STATE.post_game:
+                state = STATE.PostPostGame
     
 func spawn_duck():
     var duck = Duck.instance()
@@ -101,6 +105,8 @@ func spawn_duck():
     duck.set_owner(self)
     
     self.connect('game_ended', duck, '_game_ended')
+    
+    return duck
     
 func init_player(player):
     players[player.PLAYER_NUMBER] = player
@@ -132,6 +138,19 @@ func _process(delta):
         
     if state == STATE.game:
         game(delta)
+        
+    if state == STATE.PostPostGame && time_remaining == 0.0 && top_score > 0:
+        var duck = spawn_duck()
+        duck.winner()
+        duck.is_winner = true
+        time_remaining = 0.2
+        top_score -= 1
+        
+    for i in range(0, 3):
+        var restart_game = Input.is_joy_button_pressed(i, JOY_START) and Input.is_joy_button_pressed(i, JOY_SELECT)
+        if restart_game:
+            get_tree().change_scene("res://Game.tscn")
+        
     
 func go_to_credits():
     get_tree().change_scene("res://Credits.tscn")    
