@@ -38,6 +38,8 @@ var speed
 var is_post_game = false
 var my_score
 
+var ducks_to_add = 0
+
 func _ready():
     my_score = 0
     direction = Vector2(1, rand_range(-0.2, 0.2)).normalized()
@@ -61,6 +63,9 @@ func get_action(action):
 
 func _process(delta):
     collecting = false
+    if ducks_to_add > 0:
+        add_duck()
+        ducks_to_add -= 1
     if state == STATE.Playing:
         playing(delta)
     elif state == STATE.Scoring:
@@ -243,11 +248,10 @@ func _on_DuckCaptureArea_body_entered(body):
         collecting = true
         if body.has_method('is_duck'):
             body.queue_free()
-            add_duck()
+            ducks_to_add += 1
         if body.has_method('is_follow_duck'):
             if body.player != self:
                 var count = body.count()
                 body.kill_me()
-                for x in range(count):
-                    add_duck()
+                ducks_to_add += count
     
