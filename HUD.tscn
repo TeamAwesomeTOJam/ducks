@@ -11,7 +11,7 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Font/fallback", "Settings" ]
 
-[node name="HUD" type="CanvasLayer" index="0"]
+[node name="HUD" type="CanvasLayer"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -63,7 +63,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.327957, 0.669229, 1, 1 )
+custom_colors/font_color = Color( 0.424274, 0.438925, 0.453125, 1 )
 text = "PLAYER2 SCORE"
 align = 1
 valign = 1
@@ -89,7 +89,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 0.357527, 0.357527, 1 )
+custom_colors/font_color = Color( 1, 0.357527, 0.884556, 1 )
 text = "PLAYER3 SCORE"
 align = 1
 valign = 1
@@ -115,7 +115,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.90625, 0.837961, 0.57006, 1 )
+custom_colors/font_color = Color( 0.188728, 0.156484, 0.746094, 1 )
 text = "PLAYER4 SCORE"
 align = 1
 valign = 1
