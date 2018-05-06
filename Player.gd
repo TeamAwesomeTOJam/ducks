@@ -32,6 +32,7 @@ var DEFAULT_COLLISION_MASK
 var DEFAULT_COLLISION_LAYER
 var direction
 var speed 
+var is_post_game = false
 
 func _ready():
     direction = Vector2(1, rand_range(-0.2, 0.2)).normalized()
@@ -46,7 +47,9 @@ func _ready():
     enter_playing_state()
     
 func _game_ended():
-    state = STATE.PostGame
+    if state == STATE.Playing:
+        state = STATE.PostGame
+    is_post_game = true
 
 func get_action(action):
     return "p" + str(PLAYER_NUMBER) + action
@@ -206,9 +209,12 @@ func enter_playing_state():
     self.boost_timer = 0
     self.boost_wait_timer = 0
     self.boosting = false
-    state = STATE.Playing
+    state = STATE.Playing if !is_post_game else STATE.PostGame
 
 func respawn():
+    if is_post_game:
+        return
+    
     self.linear_velocity = Vector2(0,0)
     state = STATE.MoveToRespawn
     wait = true
