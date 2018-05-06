@@ -167,7 +167,7 @@ func playing(delta):
 func scoring(delta):
     scoring_timer -= delta
 
-    apply_impulse(Vector2(), Vector2(0.45, 1).normalized() * 5000 * delta)
+    set_linear_velocity(Vector2(0.45, 1).normalized() * 70000 * delta)
 
     if scoring_timer < 0:
         respawn()
@@ -230,7 +230,7 @@ func respawn():
 func entered_score_zone():
     self.set_collision_mask(0)
     self.set_collision_layer(0)
-    scoring_timer = 3.0
+    scoring_timer = 5.0
     state = STATE.Scoring
 
 
