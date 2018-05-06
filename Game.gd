@@ -11,7 +11,7 @@ var spawn_timer
 
 var MAX_PLAYERS = 4
 var MAX_TIME_PRE_GAME = 3.0
-var MAX_TIME_GAME = 10.0
+var MAX_TIME_GAME = 63.0
 
 
 enum STATE {
@@ -61,7 +61,7 @@ func player_ended(player_number):
         if !players:
             top_player.winner()
             last_player_done = true
-            time_remaining = 1.0
+            time_remaining = 1.5
 
 
 func update_hud():
@@ -143,7 +143,7 @@ func _process(delta):
         var duck = spawn_duck()
         duck.winner()
         duck.is_winner = true
-        time_remaining = 0.2
+        time_remaining = 1.0
         top_score -= 1
         
     for i in range(0, 3):

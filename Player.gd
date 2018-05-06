@@ -217,7 +217,7 @@ func spawning(delta):
     sent = false
         
 func post_game(delta):
-    var impulse_vector = direction * speed * (1.0 if !is_winner else 0.2)
+    var impulse_vector = direction * speed * (1.0 if !is_winner else 0.11)
     apply_impulse(Vector2(), impulse_vector * delta)
 
 ###

@@ -35,6 +35,7 @@ func _ready():
 func winner():
     direction = Vector2(1, 0).normalized()
     speed = 750
+    is_winner = true
     respawn()
     
 
@@ -120,7 +121,7 @@ func scoring(delta):
         self.queue_free()
 
 func post_game(delta):
-    var impulse_vector = direction * speed * 10.0
+    var impulse_vector = direction * speed * (10.0 if !is_winner else 1.0)
     apply_impulse(Vector2(), impulse_vector * delta)
 
 ###
