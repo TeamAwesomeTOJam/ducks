@@ -14,7 +14,7 @@ func _process(delta):
     
     timer += delta
     
-    self.offset.y += delta * -300
+    $ScrollingCredits.offset.y += delta * -300
 
 func return_to_game():
     get_tree().change_scene("res://Game.tscn")
@@ -22,8 +22,8 @@ func return_to_game():
 func _ready():
     timer = 0
     line = 0
-    $ScrollingCredits.align=Label.ALIGN_CENTER
-    $ScrollingCredits.text = """
+    $ScrollingCredits.get_node('Label').align=Label.ALIGN_CENTER
+    $ScrollingCredits.get_node('Label').text = """
     
     
     
@@ -41,35 +41,28 @@ func _ready():
     
     Developers:
     
-    
-    Daniel
-    
+    Daniel Lister
     
     
-    Cristian
+    Cristian Poll
     
     
-    
-    Aiden
+    Aiden Storey
     
     
     
     
     
     
-    Artist:
+    Art:
     
-    
-    
-    .
+    Sophia Feesh
         
     
     
     
     
     Audio:
-    
-    
     
     Jake Butineau
         
@@ -337,3 +330,7 @@ initial commit     -Daniel Lister
     55
     
     """    
+
+
+func _on_Button_pressed():
+    return_to_game()

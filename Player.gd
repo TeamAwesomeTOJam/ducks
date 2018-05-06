@@ -35,10 +35,14 @@ var boosting
 var screensize
 var DEFAULT_COLLISION_MASK
 var DEFAULT_COLLISION_LAYER
+var CAPTURE_COLLISION_MASK
+var CAPTURE_COLLISION_LAYER
 var direction
 var speed 
 var is_post_game = false
 var my_score
+
+var ducks_to_add = 0
 
 func _ready():
     my_score = 0
@@ -47,6 +51,8 @@ func _ready():
     screensize = get_viewport_rect().size
     DEFAULT_COLLISION_LAYER = 1 << PLAYER_NUMBER
     DEFAULT_COLLISION_MASK = 15 ^ DEFAULT_COLLISION_LAYER
+    CAPTURE_COLLISION_MASK = 15
+    CAPTURE_COLLISION_LAYER = 15
     $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_right"
     
     get_parent().connect('game_ended', self, '_game_ended')
@@ -63,6 +69,9 @@ func get_action(action):
 
 func _process(delta):
     collecting = false
+    if ducks_to_add > 0:
+        add_duck()
+        ducks_to_add -= 1
     if state == STATE.Playing:
         playing(delta)
     elif state == STATE.Scoring:
@@ -161,20 +170,20 @@ func playing(delta):
         set_linear_velocity(new_speed)
         
     # Animation
-    if impulse_vector.x > 0 and impulse_vector.x > impulse_vector.y:
+    if impulse_vector.x > 0 and abs(impulse_vector.x) > abs(impulse_vector.y):
         $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_right"
-    elif impulse_vector.x < 0 and impulse_vector.x < impulse_vector.y:
+    elif impulse_vector.x < 0 and abs(impulse_vector.x) > abs(impulse_vector.y):
         $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_left"
-    elif impulse_vector.y > 0 and impulse_vector.y > impulse_vector.x:
+    elif impulse_vector.y > 0 and abs(impulse_vector.y) > abs(impulse_vector.x):
         $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_down"
-    elif impulse_vector.y < 0 and impulse_vector.y < impulse_vector.x:
+    elif impulse_vector.y < 0 and abs(impulse_vector.y) > abs(impulse_vector.x):
         $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_up"
 
 var sent = false
 func scoring(delta):
     scoring_timer -= delta
 
-    set_linear_velocity(Vector2(0.45, 1).normalized() * 70000 * delta)
+    set_linear_velocity(Vector2(0.45, 1).normalized() * 1000)
 
     if scoring_timer < 0:
         add_score()
@@ -195,12 +204,12 @@ func spawning(delta):
         wait = false
         return
     
-    if self.position.x < spawn_destination.x - 300:
+    if self.position.x < spawn_destination.x:
         var vector = Vector2(1, 0.05).normalized()
-        self.apply_impulse(Vector2(), vector * 4500 * delta)
+        self.set_linear_velocity(vector * 900)
     elif self.position.y < spawn_destination.y:
         var vector = (spawn_destination - self.position).normalized()
-        self.apply_impulse(Vector2(), vector * 2500 * delta)
+        self.set_linear_velocity(vector * 1200)
     else:
         self.linear_velocity = Vector2(0,0)
         enter_playing_state()
@@ -218,6 +227,8 @@ func post_game(delta):
 func enter_playing_state():
     self.set_collision_mask(DEFAULT_COLLISION_MASK)
     self.set_collision_layer(DEFAULT_COLLISION_LAYER)
+    $DuckCaptureArea.set_collision_mask(CAPTURE_COLLISION_MASK)
+    $DuckCaptureArea.set_collision_layer(CAPTURE_COLLISION_LAYER)
     self.boost_timer = 0
     self.boost_wait_timer = 0
     self.boosting = false
@@ -243,6 +254,8 @@ func respawn():
 func entered_score_zone():
     self.set_collision_mask(0)
     self.set_collision_layer(0)
+    $DuckCaptureArea.set_collision_mask(0)
+    $DuckCaptureArea.set_collision_layer(0)
     scoring_timer = 5.0
     state = STATE.Scoring
 
@@ -258,11 +271,10 @@ func _on_DuckCaptureArea_body_entered(body):
         collecting = true
         if body.has_method('is_duck'):
             body.queue_free()
-            add_duck()
+            ducks_to_add += 1
         if body.has_method('is_follow_duck'):
             if body.player != self:
                 var count = body.count()
                 body.kill_me()
-                for x in range(count):
-                    add_duck()
+                ducks_to_add += count
     

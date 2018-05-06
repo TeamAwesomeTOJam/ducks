@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Audio/Music/TA_Duck1.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Terrain/Rock.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Art/Background/teamawesome_duckpondfall_rock mask.png" type="Texture" id=14]
+[ext_resource path="res://frankfrt.ttf" type="DynamicFontData" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -39,6 +40,14 @@ extents = Vector2( 1280, 100 )
 custom_solver_bias = 0.0
 extents = Vector2( 100, 720 )
 
+[sub_resource type="DynamicFont" id=5]
+
+size = 45
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 15 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
 [node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
@@ -49,6 +58,8 @@ Duck = ExtResource( 3 )
 
 frames = SubResource( 1 )
 animation = "loop"
+frame = 5
+playing = true
 offset = Vector2( 1280, 720 )
 _sections_unfolded = [ "Z Index" ]
 
@@ -259,6 +270,55 @@ z_as_relative = false
 texture = ExtResource( 14 )
 _sections_unfolded = [ "Z Index" ]
 
+[node name="Button" type="Button" parent="." index="12"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 2402.0
+margin_top = 5.0
+margin_right = 2553.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = true
+align = 1
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_fonts" ]
+
+[node name="Label" type="Label" parent="Button" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 5.0
+margin_top = 3.0
+margin_right = 160.0
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.311862, 0.238764, 0.664062, 1 )
+text = "Credits"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
 [connection signal="body_entered" from="ScoringArea" to="." method="_on_ScoringArea_body_entered"]
 
-
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
