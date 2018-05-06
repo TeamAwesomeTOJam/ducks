@@ -34,6 +34,7 @@ func _ready():
     screensize = get_viewport_rect().size
     DEFAULT_COLLISION_LAYER = 1 << PLAYER_NUMBER
     DEFAULT_COLLISION_MASK = 15 ^ DEFAULT_COLLISION_LAYER
+    $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_right"
 
     enter_playing_state()
 
@@ -47,6 +48,8 @@ func _process(delta):
         scoring(delta)
     elif state == STATE.Spawning:
         spawning(delta)
+        
+    z_index = position.y
 
 func _integrate_forces(f_state):
     if state == STATE.MoveToRespawn:
@@ -143,7 +146,7 @@ func playing(delta):
 func scoring(delta):
     scoring_timer -= delta
 
-    apply_impulse(Vector2(), Vector2(0, 1).normalized() * 4500 * delta)
+    apply_impulse(Vector2(), Vector2(0.45, 1).normalized() * 5000 * delta)
 
     if scoring_timer < 0:
         respawn()
@@ -194,6 +197,7 @@ func respawn():
     state = STATE.MoveToRespawn
     wait = true
     spawn_destination = Vector2(rand_range(740, 1280), rand_range(320, 1100))
+    z_index = spawn_destination.y
 
 func entered_score_zone():
     self.set_collision_mask(0)
