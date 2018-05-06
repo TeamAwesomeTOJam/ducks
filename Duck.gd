@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-
+export (PackedScene) var Splash
 var state
 var scoring_timer
 var spawn_destination
@@ -127,6 +127,12 @@ func enter_playing_state():
     self.set_collision_mask(DEFAULT_COLLISION_MASK)
     self.set_collision_layer(DEFAULT_COLLISION_LAYER)
     state = STATE.Playing if !is_post_game else STATE.PostGame
+    
+    var splash = Splash.instance()
+    splash.position = Vector2()
+    splash.scale = Vector2(0.4, 0.4)
+    splash.z_index = position.y + 1
+    self.add_child(splash)
 
 func set_collision_stuff(mask, layer):
     self.set_collision_mask(mask)

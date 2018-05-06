@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -9,9 +9,11 @@
 [ext_resource path="res://Art/Background/teamawesome_duckpondfall4.jpg" type="Texture" id=7]
 [ext_resource path="res://Art/Background/teamawesome_duckpondfall5.jpg" type="Texture" id=8]
 [ext_resource path="res://Art/Background/teamawesome_duckpondfall6.jpg" type="Texture" id=9]
-[ext_resource path="res://HUD.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Audio/Music/TA_Duck1.ogg" type="AudioStream" id=11]
-[ext_resource path="res://Terrain/Rock.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Splash.tscn" type="PackedScene" id=10]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Audio/Music/TA_Duck1.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Terrain/Rock.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Art/Background/teamawesome_duckpondfall_rock mask.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -47,7 +49,7 @@ Duck = ExtResource( 3 )
 
 frames = SubResource( 1 )
 animation = "loop"
-frame = 3
+frame = 4
 playing = true
 offset = Vector2( 1280, 720 )
 _sections_unfolded = [ "Z Index" ]
@@ -56,23 +58,27 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( 782.234, 364.195 )
 _sections_unfolded = [ "Collision", "Linear", "Transform", "Z Index" ]
+Splash = ExtResource( 10 )
 
 [node name="Player1" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 518.883, 859.082 )
 PLAYER_NUMBER = 1
+Splash = ExtResource( 10 )
 
 [node name="Player2" parent="." index="3" instance=ExtResource( 2 )]
 
 position = Vector2( 1059.79, 863.864 )
 PLAYER_NUMBER = 2
+Splash = ExtResource( 10 )
 
 [node name="Player3" parent="." index="4" instance=ExtResource( 2 )]
 
 position = Vector2( 1270.39, 383.995 )
 PLAYER_NUMBER = 3
+Splash = ExtResource( 10 )
 
-[node name="HUD" parent="." index="5" instance=ExtResource( 10 )]
+[node name="HUD" parent="." index="5" instance=ExtResource( 11 )]
 
 [node name="ScoringArea" type="Area2D" parent="." index="6"]
 
@@ -100,7 +106,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="8"]
 
-stream = ExtResource( 11 )
+stream = ExtResource( 12 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
@@ -141,109 +147,117 @@ _sections_unfolded = [ "Transform" ]
 
 editor/display_folded = true
 
-[node name="Rock" parent="Rocks" index="0" instance=ExtResource( 12 )]
+[node name="Rock" parent="Rocks" index="0" instance=ExtResource( 13 )]
 
 position = Vector2( 126.448, 1160.87 )
 
-[node name="Rock2" parent="Rocks" index="1" instance=ExtResource( 12 )]
+[node name="Rock2" parent="Rocks" index="1" instance=ExtResource( 13 )]
 
 position = Vector2( 313.064, 1206.3 )
 
-[node name="Rock3" parent="Rocks" index="2" instance=ExtResource( 12 )]
+[node name="Rock3" parent="Rocks" index="2" instance=ExtResource( 13 )]
 
 position = Vector2( 488.631, 1207.53 )
 
-[node name="Rock4" parent="Rocks" index="3" instance=ExtResource( 12 )]
+[node name="Rock4" parent="Rocks" index="3" instance=ExtResource( 13 )]
 
 position = Vector2( 616.316, 1195.25 )
 
-[node name="Rock5" parent="Rocks" index="4" instance=ExtResource( 12 )]
+[node name="Rock5" parent="Rocks" index="4" instance=ExtResource( 13 )]
 
 position = Vector2( 740.318, 1216.12 )
 
-[node name="Rock6" parent="Rocks" index="5" instance=ExtResource( 12 )]
+[node name="Rock6" parent="Rocks" index="5" instance=ExtResource( 13 )]
 
 position = Vector2( 821.348, 1206.3 )
 
-[node name="Rock7" parent="Rocks" index="6" instance=ExtResource( 12 )]
+[node name="Rock7" parent="Rocks" index="6" instance=ExtResource( 13 )]
 
 position = Vector2( 950.261, 1209.98 )
 
-[node name="Rock8" parent="Rocks" index="7" instance=ExtResource( 12 )]
+[node name="Rock8" parent="Rocks" index="7" instance=ExtResource( 13 )]
 
 position = Vector2( 1134.42, 1212.44 )
 
-[node name="Rock9" parent="Rocks" index="8" instance=ExtResource( 12 )]
+[node name="Rock9" parent="Rocks" index="8" instance=ExtResource( 13 )]
 
 position = Vector2( 1011.65, 1223.49 )
 
-[node name="Rock10" parent="Rocks" index="9" instance=ExtResource( 12 )]
+[node name="Rock10" parent="Rocks" index="9" instance=ExtResource( 13 )]
 
 position = Vector2( 1285.43, 1212.44 )
 
-[node name="Rock11" parent="Rocks" index="10" instance=ExtResource( 12 )]
+[node name="Rock11" parent="Rocks" index="10" instance=ExtResource( 13 )]
 
 position = Vector2( 1433.99, 1214.9 )
 
-[node name="Rock12" parent="Rocks" index="11" instance=ExtResource( 12 )]
+[node name="Rock12" parent="Rocks" index="11" instance=ExtResource( 13 )]
 
 position = Vector2( 1553.08, 1213.67 )
 
-[node name="Rock13" parent="Rocks" index="12" instance=ExtResource( 12 )]
+[node name="Rock13" parent="Rocks" index="12" instance=ExtResource( 13 )]
 
 position = Vector2( 760.836, 197.599 )
 
-[node name="Rock14" parent="Rocks" index="13" instance=ExtResource( 12 )]
+[node name="Rock14" parent="Rocks" index="13" instance=ExtResource( 13 )]
 
 position = Vector2( 925.934, 169.898 )
 
-[node name="Rock15" parent="Rocks" index="14" instance=ExtResource( 12 )]
+[node name="Rock15" parent="Rocks" index="14" instance=ExtResource( 13 )]
 
 position = Vector2( 1071.09, 197.599 )
 
-[node name="Rock16" parent="Rocks" index="15" instance=ExtResource( 12 )]
+[node name="Rock16" parent="Rocks" index="15" instance=ExtResource( 13 )]
 
 position = Vector2( 1204.05, 169.898 )
 
-[node name="Rock17" parent="Rocks" index="16" instance=ExtResource( 12 )]
+[node name="Rock17" parent="Rocks" index="16" instance=ExtResource( 13 )]
 
 position = Vector2( 1392.42, 180.979 )
 
-[node name="Rock18" parent="Rocks" index="17" instance=ExtResource( 12 )]
+[node name="Rock18" parent="Rocks" index="17" instance=ExtResource( 13 )]
 
 position = Vector2( 1263.88, 161.034 )
 
-[node name="Rock19" parent="Rocks" index="18" instance=ExtResource( 12 )]
+[node name="Rock19" parent="Rocks" index="18" instance=ExtResource( 13 )]
 
 position = Vector2( 1487.71, 173.222 )
 
-[node name="Rock20" parent="Rocks" index="19" instance=ExtResource( 12 )]
+[node name="Rock20" parent="Rocks" index="19" instance=ExtResource( 13 )]
 
 position = Vector2( 1580.78, 194.275 )
 
-[node name="Rock21" parent="Rocks" index="20" instance=ExtResource( 12 )]
+[node name="Rock21" parent="Rocks" index="20" instance=ExtResource( 13 )]
 
 position = Vector2( 1682.72, 169.898 )
 
-[node name="Rock22" parent="Rocks" index="21" instance=ExtResource( 12 )]
+[node name="Rock22" parent="Rocks" index="21" instance=ExtResource( 13 )]
 
 position = Vector2( 1749.2, 177.654 )
 
-[node name="Rock23" parent="Rocks" index="22" instance=ExtResource( 12 )]
+[node name="Rock23" parent="Rocks" index="22" instance=ExtResource( 13 )]
 
 position = Vector2( 1887.71, 169.898 )
 
-[node name="Rock24" parent="Rocks" index="23" instance=ExtResource( 12 )]
+[node name="Rock24" parent="Rocks" index="23" instance=ExtResource( 13 )]
 
 position = Vector2( 1987.43, 178.763 )
 
-[node name="Rock25" parent="Rocks" index="24" instance=ExtResource( 12 )]
+[node name="Rock25" parent="Rocks" index="24" instance=ExtResource( 13 )]
 
 position = Vector2( 2078.29, 205.355 )
 
-[node name="Rock26" parent="Rocks" index="25" instance=ExtResource( 12 )]
+[node name="Rock26" parent="Rocks" index="25" instance=ExtResource( 13 )]
 
 position = Vector2( 2210.15, 168.79 )
+
+[node name="teamawesome_duckpondfall_rock mask" type="Sprite" parent="." index="11"]
+
+position = Vector2( 1282.36, 717.512 )
+z_index = 4096
+z_as_relative = false
+texture = ExtResource( 14 )
+_sections_unfolded = [ "Z Index" ]
 
 [connection signal="body_entered" from="ScoringArea" to="." method="_on_ScoringArea_body_entered"]
 

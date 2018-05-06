@@ -7,6 +7,7 @@ export (float) var BOOST_FACTOR = 2
 export (PackedScene) var Duck
 export (float) var BOOST_WAIT_TIME = 3
 export (float) var BOOST_TIME = 0.2
+export (PackedScene) var Splash
 
 var collecting
 
@@ -205,6 +206,11 @@ func enter_playing_state():
     self.boost_wait_timer = 0
     self.boosting = false
     state = STATE.Playing if !is_post_game else STATE.PostGame
+    
+    var splash = Splash.instance()
+    splash.position = Vector2()
+    splash.z_index = position.y + 1
+    self.add_child(splash)
 
 func respawn():
     if is_post_game:
