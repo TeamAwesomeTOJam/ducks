@@ -10,7 +10,7 @@ var speed
 var override_velocity
 
 var DEFAULT_COLLISION_MASK = 15
-var DEFAULT_COLLISION_LAYER = 15
+var DEFAULT_COLLISION_LAYER = 0
 var child
 var is_post_game = false
 

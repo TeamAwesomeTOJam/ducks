@@ -10,6 +10,10 @@ var player = null
 func is_follow_duck():
     pass
 
+func _process(delta):
+    z_index = position.y
+
+
 func count():
     if child:
         return child.count() + 1

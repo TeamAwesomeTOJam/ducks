@@ -83,7 +83,7 @@ func add_duck():
     var duck = Duck.instance()
     duck.player = self
     duck.set_collision_mask(DEFAULT_COLLISION_MASK)
-    duck.set_collision_layer(DEFAULT_COLLISION_LAYER)
+    #duck.set_collision_layer(DEFAULT_COLLISION_LAYER)
     var behind = - self.linear_velocity
     if behind.length() == 0:
         behind = Vector2(0,-1)
