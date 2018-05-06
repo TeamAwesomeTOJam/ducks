@@ -84,6 +84,8 @@ func spawn_duck():
 
 func _ready():
     update_state(STATE.idle)
+    $Background.play()
+    randomize()
 
 
 func _process(delta):

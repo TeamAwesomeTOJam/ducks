@@ -86,6 +86,7 @@ func add_duck(duck, behind):
 func playing(delta):
     var impulse_vector = direction * speed
     apply_impulse(Vector2(), impulse_vector * delta)
+    $AnimatedSprite.play()
 
 func spawning(delta):
     if self.position.x < spawn_destination.x - 300:
