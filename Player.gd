@@ -276,9 +276,11 @@ func respawn():
     state = STATE.MoveToRespawn
     wait = true
     if is_winner: 
-        spawn_destination = Vector2(862.564941, 587.203247)
+        spawn_destination = Vector2(500.564941, 587.203247)
     else:
         spawn_destination = Vector2(rand_range(500, 750), rand_range(500, 1100))
+        
+    $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_right"
     z_index = spawn_destination.y
 
 func entered_score_zone():
