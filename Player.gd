@@ -149,6 +149,7 @@ func playing(delta):
 
     if  boost_pressed and self.boost_wait_timer == 0:
         self.boosting = true
+        splash()
         self.boost_timer = BOOST_TIME
         self.boost_wait_timer = BOOST_WAIT_TIME
 
@@ -238,12 +239,16 @@ func enter_playing_state():
         state = STATE.PostGame
     
     if not first_time_enter_playing:
-        var splash = Splash.instance()
-        splash.position = Vector2()
-        splash.z_index = position.y + 1
-        self.add_child(splash)
+        splash()
         $SplashSound.play()
     first_time_enter_playing = false
+    
+    
+func splash():
+    var splash = Splash.instance()
+    splash.position = Vector2()
+    splash.z_index = position.y + 1
+    self.add_child(splash)
 
 func respawn():
     self.linear_velocity = Vector2(0,0)

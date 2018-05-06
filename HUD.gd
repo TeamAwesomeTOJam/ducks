@@ -9,7 +9,15 @@ func update_player_score(player, score):
 
 
 func update_time_game(time_remaining):
-    $LabelTimeGame.text = str(floor(time_remaining))
+    if floor(time_remaining) <= 5:
+        $LabelTimeGame.hide()
+        $LabelTimePreGame.show()
+        $LabelTimePreGame.text = str(floor(time_remaining))
+    else:
+        $LabelTimeGame.text = str(floor(time_remaining))
+        
+    if time_remaining <= 0.1:
+        $LabelTimePreGame.hide()
 
 
 func update_time_pre_game(time_remaining):

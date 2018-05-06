@@ -58,7 +58,7 @@ Duck = ExtResource( 3 )
 
 frames = SubResource( 1 )
 animation = "loop"
-frame = 1
+frame = 4
 playing = true
 offset = Vector2( 1280, 720 )
 _sections_unfolded = [ "Z Index" ]
@@ -272,6 +272,7 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="Button" type="Button" parent="." index="12"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
