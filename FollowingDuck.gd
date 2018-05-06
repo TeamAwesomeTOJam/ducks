@@ -14,7 +14,7 @@ func _process(delta):
     var target_angle = -global_rotation
     
     $AnimatedSprite.rotate(target_angle - $AnimatedSprite.rotation)
-    z_index = to_global(position).y
+    z_index = to_global(position).y + 7
     if linear_velocity.x > 0 and abs(linear_velocity.x) > abs(linear_velocity.y):
         $AnimatedSprite.animation = "right"
     elif linear_velocity.x < 0 and abs(linear_velocity.x) > abs(linear_velocity.y):

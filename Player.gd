@@ -81,7 +81,7 @@ func _process(delta):
     elif state == STATE.PostGame:
         post_game(delta)
         
-    z_index = position.y
+    z_index = position.y + 30
 
 func _integrate_forces(f_state):
     if state == STATE.MoveToRespawn:
