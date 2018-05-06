@@ -11,7 +11,7 @@ func is_follow_duck():
     pass
 
 func _process(delta):
-    z_index = position.y
+    z_index = to_global(position).y
 
 
 func count():
