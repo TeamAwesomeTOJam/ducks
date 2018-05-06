@@ -11,7 +11,9 @@ func is_follow_duck():
     pass
 
 func _process(delta):
-    $AnimatedSprite.rotation = -rotation
+    var target_angle = -global_rotation
+    
+    $AnimatedSprite.rotate(target_angle - $AnimatedSprite.rotation)
     z_index = to_global(position).y
     if linear_velocity.x > 0 and abs(linear_velocity.x) > abs(linear_velocity.y):
         $AnimatedSprite.animation = "right"

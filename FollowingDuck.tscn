@@ -35,7 +35,7 @@ animations = [ {
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="Duck" type="RigidBody2D"]
+[node name="Duck" type="RigidBody2D" index="0"]
 
 z_as_relative = false
 input_pickable = false
