@@ -35,6 +35,8 @@ func _process(delta):
         spawning(delta)
     elif state == STATE.Scoring:
         scoring(delta)
+        
+    z_index = position.y
 
 
 func _integrate_forces(f_state):

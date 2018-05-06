@@ -48,6 +48,8 @@ func _process(delta):
         scoring(delta)
     elif state == STATE.Spawning:
         spawning(delta)
+        
+    z_index = position.y
 
 func _integrate_forces(f_state):
     if state == STATE.MoveToRespawn:
@@ -142,7 +144,7 @@ func playing(delta):
 func scoring(delta):
     scoring_timer -= delta
 
-    apply_impulse(Vector2(), Vector2(0, 1).normalized() * 4500 * delta)
+    apply_impulse(Vector2(), Vector2(0.55, 1).normalized() * 5000 * delta)
 
     if scoring_timer < 0:
         respawn()
