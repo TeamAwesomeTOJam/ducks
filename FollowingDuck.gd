@@ -5,6 +5,7 @@ extends RigidBody2D
 # var b = "textvar"
 var child = null
 var parent = null
+var player = null
 
 func is_follow_duck():
     pass

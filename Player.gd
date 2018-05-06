@@ -79,7 +79,9 @@ func _integrate_forces(f_state):
 
         state = STATE.Spawning
 
-func add_duck(duck):
+func add_duck():
+    var duck = Duck.instance()
+    duck.player = self
     duck.set_collision_mask(DEFAULT_COLLISION_MASK)
     duck.set_collision_layer(DEFAULT_COLLISION_LAYER)
     var behind = - self.linear_velocity
@@ -237,10 +239,11 @@ func _on_DuckCaptureArea_body_entered(body):
         collecting = true
         if body.has_method('is_duck'):
             body.queue_free()
-            add_duck(Duck.instance())
+            add_duck()
         if body.has_method('is_follow_duck'):
-            var count = body.count()
-            body.kill_me()
-            for x in range(count):
-                add_duck(Duck.instance())
+            if body.player != self:
+                var count = body.count()
+                body.kill_me()
+                for x in range(count):
+                    add_duck()
     
