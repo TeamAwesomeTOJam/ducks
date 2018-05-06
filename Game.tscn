@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -48,14 +48,6 @@ use_filter = false
 font_data = ExtResource( 15 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=6]
-
-size = 100
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 15 )
-_sections_unfolded = [ "Font", "Settings" ]
-
 [node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
@@ -66,7 +58,7 @@ Duck = ExtResource( 3 )
 
 frames = SubResource( 1 )
 animation = "loop"
-frame = 3
+frame = 1
 playing = true
 offset = Vector2( 1280, 720 )
 _sections_unfolded = [ "Z Index" ]
@@ -133,7 +125,6 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="Borders" type="StaticBody2D" parent="." index="9"]
 
-editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -150,7 +141,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Borders" index="1"]
 
-position = Vector2( 838.877, 1236.61 )
+position = Vector2( 837.37, 1324.04 )
 scale = Vector2( 0.658883, 1 )
 shape = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
@@ -164,55 +155,53 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Rocks" type="Node" parent="." index="10"]
 
-editor/display_folded = true
-
 [node name="Rock" parent="Rocks" index="0" instance=ExtResource( 13 )]
 
-position = Vector2( 126.448, 1160.87 )
+position = Vector2( 126.448, 1198.55 )
 
 [node name="Rock2" parent="Rocks" index="1" instance=ExtResource( 13 )]
 
-position = Vector2( 313.064, 1206.3 )
+position = Vector2( 313.064, 1243.98 )
 
 [node name="Rock3" parent="Rocks" index="2" instance=ExtResource( 13 )]
 
-position = Vector2( 488.631, 1207.53 )
+position = Vector2( 488.631, 1245.21 )
 
 [node name="Rock4" parent="Rocks" index="3" instance=ExtResource( 13 )]
 
-position = Vector2( 616.316, 1195.25 )
+position = Vector2( 616.316, 1232.93 )
 
 [node name="Rock5" parent="Rocks" index="4" instance=ExtResource( 13 )]
 
-position = Vector2( 740.318, 1216.12 )
+position = Vector2( 740.318, 1253.8 )
 
 [node name="Rock6" parent="Rocks" index="5" instance=ExtResource( 13 )]
 
-position = Vector2( 821.348, 1206.3 )
+position = Vector2( 821.348, 1243.98 )
 
 [node name="Rock7" parent="Rocks" index="6" instance=ExtResource( 13 )]
 
-position = Vector2( 950.261, 1209.98 )
+position = Vector2( 951.768, 1247.66 )
 
 [node name="Rock8" parent="Rocks" index="7" instance=ExtResource( 13 )]
 
-position = Vector2( 1134.42, 1212.44 )
+position = Vector2( 1135.93, 1250.12 )
 
 [node name="Rock9" parent="Rocks" index="8" instance=ExtResource( 13 )]
 
-position = Vector2( 1011.65, 1223.49 )
+position = Vector2( 1011.65, 1261.17 )
 
 [node name="Rock10" parent="Rocks" index="9" instance=ExtResource( 13 )]
 
-position = Vector2( 1285.43, 1212.44 )
+position = Vector2( 1286.94, 1250.12 )
 
 [node name="Rock11" parent="Rocks" index="10" instance=ExtResource( 13 )]
 
-position = Vector2( 1433.99, 1214.9 )
+position = Vector2( 1435.5, 1252.58 )
 
 [node name="Rock12" parent="Rocks" index="11" instance=ExtResource( 13 )]
 
-position = Vector2( 1553.08, 1213.67 )
+position = Vector2( 1553.08, 1251.35 )
 
 [node name="Rock13" parent="Rocks" index="12" instance=ExtResource( 13 )]
 
@@ -328,30 +317,8 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="BoostHint" type="Label" parent="." index="13"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 2180.0
-margin_top = 1352.0
-margin_right = 2549.0
-margin_bottom = 1423.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0, 0.78125, 0.0671387, 1 )
-text = "A: Boost"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
-
 [connection signal="body_entered" from="ScoringArea" to="." method="_on_ScoringArea_body_entered"]
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+
