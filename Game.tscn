@@ -326,10 +326,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 2236.0
-margin_top = 1363.0
-margin_right = 2529.0
-margin_bottom = 1420.0
+margin_left = 2252.0
+margin_top = 1367.0
+margin_right = 2545.0
+margin_bottom = 1424.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -337,11 +337,12 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.382812, 1, 0, 1 )
 text = "A: Boost"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 [connection signal="body_entered" from="ScoringArea" to="." method="_on_ScoringArea_body_entered"]
 
