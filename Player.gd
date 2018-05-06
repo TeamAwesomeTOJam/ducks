@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal player_ended
+
 export (int) var SPEED = 20000
 export (int) var MAX_SPEED = 500
 export (int) var PLAYER_NUMBER = 0
@@ -40,7 +42,7 @@ var my_score
 
 func _ready():
     my_score = 0
-    direction = Vector2(1, rand_range(-0.2, 0.2)).normalized()
+    direction = Vector2(1, 0).normalized()
     speed = rand_range(450, 750)
     screensize = get_viewport_rect().size
     DEFAULT_COLLISION_LAYER = 1 << PLAYER_NUMBER
@@ -168,7 +170,7 @@ func playing(delta):
     elif impulse_vector.y < 0 and impulse_vector.y < impulse_vector.x:
         $AnimatedSprite.animation = "p" + str(PLAYER_NUMBER) + "_up"
 
-
+var sent = false
 func scoring(delta):
     scoring_timer -= delta
 
@@ -176,7 +178,16 @@ func scoring(delta):
 
     if scoring_timer < 0:
         add_score()
-        respawn()
+        if !is_post_game:
+            respawn()
+        elif !sent:
+            emit_signal('player_ended', self.PLAYER_NUMBER)
+            sent = true
+   
+var is_winner = false         
+func winner():
+    is_winner = true
+    respawn()
 
 
 func spawning(delta):
@@ -194,8 +205,10 @@ func spawning(delta):
         self.linear_velocity = Vector2(0,0)
         enter_playing_state()
         
+    sent = false
+        
 func post_game(delta):
-    var impulse_vector = direction * speed * 10.0
+    var impulse_vector = direction * speed * (10.0 if !is_winner else 1.0)
     apply_impulse(Vector2(), impulse_vector * delta)
 
 ###
@@ -208,7 +221,9 @@ func enter_playing_state():
     self.boost_timer = 0
     self.boost_wait_timer = 0
     self.boosting = false
-    state = STATE.Playing if !is_post_game else STATE.PostGame
+    state = STATE.Playing 
+    if is_post_game || is_winner:
+        state = STATE.PostGame
     
     var splash = Splash.instance()
     splash.position = Vector2()
@@ -216,13 +231,13 @@ func enter_playing_state():
     self.add_child(splash)
 
 func respawn():
-    if is_post_game:
-        return
-    
     self.linear_velocity = Vector2(0,0)
     state = STATE.MoveToRespawn
     wait = true
-    spawn_destination = Vector2(rand_range(740, 1280), rand_range(320, 1100))
+    if is_winner: 
+        spawn_destination = Vector2(862.564941, 587.203247)
+    else:
+        spawn_destination = Vector2(rand_range(740, 1280), rand_range(320, 1100))
     z_index = spawn_destination.y
 
 func entered_score_zone():
