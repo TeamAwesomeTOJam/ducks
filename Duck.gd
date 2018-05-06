@@ -73,7 +73,7 @@ func spawning(delta):
 func scoring(delta):
     scoring_timer -= delta
 
-    apply_impulse(Vector2(), Vector2(0.55, 1).normalized() * 5000 * delta)
+    apply_impulse(Vector2(), Vector2(0.45, 1).normalized() * 5000 * delta)
 
     if scoring_timer < 0:
         self.queue_free()
