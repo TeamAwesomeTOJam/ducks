@@ -11,7 +11,8 @@ var spawn_timer
 
 var MAX_PLAYERS = 4
 var MAX_TIME_PRE_GAME = 3.0
-var MAX_TIME_GAME = 60.0
+var MAX_TIME_GAME = 10.0
+
 
 enum STATE {
     idle,
@@ -38,7 +39,27 @@ func end_game():
     $HUD.end_game()
     update_state(STATE.post_game)
     
-#    emit_signal('game_ended')
+    emit_signal('game_ended')
+    
+
+var top_score = -1
+var top_player = null
+var players = {}
+var last_player_done = false
+func player_ended(player_number):
+    if last_player_done && player_number == top_player.PLAYER_NUMBER:
+        print('ended')
+    else:
+        var player = players[player_number]
+        players.erase(player_number)
+
+        if player.my_score > top_score:
+            top_player = player
+            top_score = player.my_score
+    
+        if !players:
+            top_player.winner()
+            last_player_done = true
 
 
 func update_hud():
@@ -81,11 +102,19 @@ func spawn_duck():
     
     self.connect('game_ended', duck, '_game_ended')
     
+func init_player(player):
+    players[player.PLAYER_NUMBER] = player
+    player.connect('player_ended', self, 'player_ended')
 
 func _ready():
     update_state(STATE.idle)
     $Background.play()
     randomize()
+    
+    init_player($Player0)
+    init_player($Player1)
+    init_player($Player2)
+    init_player($Player3)
 
 
 func _process(delta):
