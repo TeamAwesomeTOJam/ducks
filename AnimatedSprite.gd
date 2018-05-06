@@ -9,9 +9,9 @@ var time = 0.0
 
 func _ready():
     start_pos = position
-    bob_speed = rand_range(0.5, 0.8)
+    bob_speed = rand_range(2, 6)
 
 func _process(delta):
     time += delta * bob_speed
-    position = start_pos + Vector2(0, sin(time))
+    position = start_pos + Vector2(0, sin(time) * 3.0)
     

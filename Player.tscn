@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://FollowingDuck.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://Art/Player/teamawesome_miketyson_duck_right.png" type="Texture" id=16]
 [ext_resource path="res://Art/Player/teamawesome_miketyson_duck_left.png" type="Texture" id=17]
 [ext_resource path="res://Art/Player/teamawesome_pinky_duck_right.png" type="Texture" id=18]
+[ext_resource path="res://AnimatedSprite.gd" type="Script" id=19]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -148,6 +149,7 @@ Splash = null
 
 frames = SubResource( 1 )
 animation = "p0_up"
+script = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
