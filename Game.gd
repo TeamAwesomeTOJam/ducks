@@ -132,7 +132,7 @@ func _process(delta):
     
     if state == STATE.idle:
         for i in range(0, 3):
-            if Input.is_joy_button_pressed(i, JOY_START):
+            if Input.is_joy_button_pressed(i, JOY_START) or Input.is_action_pressed('start'):
                 pre_game()
         
 #    if Input.is_action_just_pressed('p0duck'):

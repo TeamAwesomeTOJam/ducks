@@ -66,35 +66,35 @@ Duck = ExtResource( 3 )
 
 frames = SubResource( 1 )
 animation = "loop"
-frame = 2
+frame = 4
 playing = true
 offset = Vector2( 1280, 720 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="Player0" parent="." index="1" instance=ExtResource( 2 )]
 
-position = Vector2( 782.234, 364.195 )
+position = Vector2( 879.867, 500.881 )
 _sections_unfolded = [ "Collision", "Linear", "Transform", "Z Index" ]
 BOOST_FACTOR = 6.0
 Splash = ExtResource( 10 )
 
 [node name="Player1" parent="." index="2" instance=ExtResource( 2 )]
 
-position = Vector2( 518.883, 859.082 )
+position = Vector2( 783.887, 939.978 )
 PLAYER_NUMBER = 1
 BOOST_FACTOR = 6.0
 Splash = ExtResource( 10 )
 
 [node name="Player2" parent="." index="3" instance=ExtResource( 2 )]
 
-position = Vector2( 1059.79, 863.864 )
+position = Vector2( 1218.79, 967.076 )
 PLAYER_NUMBER = 2
 BOOST_FACTOR = 6.0
 Splash = ExtResource( 10 )
 
 [node name="Player3" parent="." index="4" instance=ExtResource( 2 )]
 
-position = Vector2( 1270.39, 383.995 )
+position = Vector2( 1298.29, 478.838 )
 PLAYER_NUMBER = 3
 BOOST_FACTOR = 6.0
 Splash = ExtResource( 10 )
